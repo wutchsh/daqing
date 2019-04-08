@@ -9,9 +9,11 @@
 auto();
 images.requestScreenCapture();sleep(200);
 var N = 5;      // 定义上书房空位或者生几个娃进行一次培养
-var M = 4;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
+var M = 20;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
+
 function tanxin(){
     var n = 0;                      //判断生娃是否到上书房最大数量
+    
     //平均3次谈心可获得一个娃娃，最多需要3*N次，极限7*N
     for(i=0;i<7*N;i++){
         press(890,1845,10);sleep(150);  //点击谈心
@@ -20,10 +22,11 @@ function tanxin(){
         press(720,1000,10);sleep(1200);
         var stat = images.detectsColor(captureScreen(), "#fff1e7cb", 730,1180);
         if(stat){
-            sleep(400);
+            sleep(800);
             n += 1;
+            log("当前皇子数量："+n);
             if(n >= N){
-                press(540,1360,10);sleep(500);
+                press(540,1360,20);sleep(500);
                 return;
             }
             else{
@@ -31,7 +34,7 @@ function tanxin(){
                 press(720,1000,10);sleep(100);
                 press(720,1000,10);sleep(100);
                 press(720,1000,10);sleep(100);
-                press(720,1000,10);sleep(500);
+                press(720,1000,10);sleep(1500);
             }
         }
     }
@@ -45,12 +48,12 @@ function name(m){
     for(i=0;i<m;i++){
         press(895,385+295*i,10);sleep(200);
         press(810,870,10);sleep(100);   //随机取名
-        // 重名检测
         press(540,1070,10);sleep(20);
         press(540,1070,10);sleep(200);
         // 敏感词检测优先
         while(images.detectsColor(captureScreen(), "#ffce4727", 540,1085)){
             files.append(logurl, "**检测到敏感词汇，重新随机命令！\t<----------\n", encoding = 'utf-8');
+            press(540,1085,10);sleep(200);
             press(810,870,10);sleep(200);
             press(540,1070,10);sleep(20);
             press(540,1070,10);sleep(200);
@@ -63,10 +66,17 @@ function name(m){
             press(540,1070,10);sleep(200);
             while(images.detectsColor(captureScreen(), "#ffce4727", 540,1085)){
                 files.append(logurl, "**检测到敏感词汇，重新随机命令！\t<----------\n", encoding = 'utf-8');
+                press(540,1085,10);sleep(200);
                 press(810,870,10);sleep(200);
                 press(540,1070,10);sleep(20);
                 press(540,1070,10);sleep(200);
             }
+        }
+        sleep(800);
+        if(images.detectsColor(captureScreen(), "#ff504844", 810,485+295*i)){
+            files.append(logurl, "**取名失败！\t\t<--------\n", encoding = 'utf-8');
+        }else{
+            files.append(logurl, "取名成功\n", encoding = 'utf-8');
         }
     }
     files.append(logurl, "批量取名完成\n", encoding = 'utf-8');
@@ -74,6 +84,7 @@ function name(m){
 
 // 加速、一键培养以及封爵
 function jiasu(m){
+
     // 循环加速婴儿过渡期
     for(i=0;i<m;i++){
         press(895,488+295*i,10);sleep(200);
@@ -93,12 +104,17 @@ function jiasu(m){
     }
     files.append(logurl, "批量加速婴儿过渡期完成！\n", encoding = 'utf-8');
     
-    press(685,1850,10);sleep(200);  //一键培养
     // 检测是否勾选专人培养
-    if(images.detectsColor(captureScreen(), "#ff227281", 247,1844)){
-        press(235,1850,10);sleep(1500);  //打开专人培养
+    if(images.detectsColor(captureScreen(), "#ff227281", 247,1845)){
+        press(247,1845,20);sleep(1500);  //打开专人培养
         files.append(logurl, "打开专人培养！\n", encoding = 'utf-8');
     }
+    if(images.detectsColor(captureScreen(), "#ff227281", 247,1845)){
+        files.append(logurl, "打开专人培养失败！\t<----------\n", encoding = 'utf-8');
+    }
+
+    press(685,1850,10);sleep(1500);  // 一键培养
+
     // 循环快捷培养
     for(i=0;i<m;i++){
         if(images.detectsColor(captureScreen(), "#ff656565", 810,488)){
@@ -109,11 +125,12 @@ function jiasu(m){
         press(895,488+295*i,10);sleep(200);
         press(755,1110,10);sleep(3000);
     }
-    files.append(logurl, "批量快捷培养完成！\n", encoding = 'utf-8');
+    files.append(logurl,"批量快捷培养完成！\n", encoding = 'utf-8');
+
     // 循环封爵
     for(i=0;i<m;i++){
         press(895,445,10);sleep(1000);
-        press(895,445,10);sleep(500);
+        press(895,445,10);sleep(1000);
     }
     files.append(logurl, "批量封爵完成！\n", encoding = 'utf-8');
 }
@@ -125,7 +142,7 @@ function peiyang(N){
     }
     else{
         name(5);sleep(500);
-        jiasu(5);sleep(500);
+        jiasu(5);sleep(1500);
         name(N-5);sleep(500);
         jiasu(N-5);sleep(500);
     }
@@ -135,7 +152,7 @@ function peiyang(N){
 function main(){
     var date = new Date();
     var time = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
-    logurl = "/sdcard/脚本/daqing/log_"+time+".txt";
+    logurl = "/sdcard/脚本/daqing/log/log_"+time+".txt";
     files.write(logurl, "", encoding = "utf-8");sleep(100);
     files.append(logurl, "********** "+time+" **********\n\n", encoding = 'utf-8');sleep(200);
     // 从后宫进入三宫六院再进入谈心界面
@@ -145,8 +162,8 @@ function main(){
         tanxin();
         peiyang(N);
         var k = j+1;
-        press(690,1020,10);sleep(200);  // 直接返回谈心界面
-        files.append(logurl, "#####第 "+k+" 轮循环完成#####\n\n", encoding = 'utf-8');
+        press(690,1020,20);sleep(1500);  // 直接返回谈心界面
+        files.append(logurl, "##### 第 "+k+" 轮循环完成 #####\n\n", encoding = 'utf-8');
     }
     files.append(logurl, "批量生娃完成，累计生娃："+ M*N +"\n\n", encoding = 'utf-8');
 }

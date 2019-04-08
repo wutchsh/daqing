@@ -22,7 +22,7 @@ var template5 = images.read(dir+"/hongbao.png");
 
 if(mode == 0){
     acc = "csjyf";
-    n0 = 10;
+    n0 = 0;
     N = 100;
     Array = [3,4,6,8,10,11,15,16,18,19,21,25,29,30,31,35,36,40];
 }
@@ -30,7 +30,7 @@ else if(mode == 1){
     acc = "TaIzu";
     n0 = 1;
     N = 50;
-    Array = [16,17,20,21,22];
+    Array = [16,17,18,19,20,21,22];
 }
 
 function imgdect(temp,x,y,w,h){
@@ -71,7 +71,6 @@ function account(){
     press(540,1040,10);sleep(500);  //按钮“切换账号”
     inputacc();
     while(images.detectsColor(captureScreen(), "#fff7f2d3", 250,925)){
-        //log(accid +"：该账号未注册！");sleep(500);
         files.append(logurl, "**账号:"+ accid +"：该账号未注册！\n\n", encoding = 'utf-8');sleep(500);
         n += 1;
         inputacc();
@@ -82,9 +81,8 @@ function account(){
 function daily(){
     sleep(1000);
     press(630,1830,10);sleep(500);  // 由主界面进入商城
-    var point1 = imgdect(template1, 120, 630, 600, 950);
+    var point1 = imgdect(template1, 450, 630, 510, 300);
     if(point1){
-        log("检测到第一个");
         sleep(300);
         press(point1.x+80,point1.y+290,10);sleep(400);
         // 判断是否弹出购买确认界面
@@ -95,17 +93,12 @@ function daily(){
         }
         press(point1.x+80,point1.y+290,10);sleep(500);
 
-        // press(point1.x-580,point1.y+290,10);sleep(200);
-        // press(point1.x-580,point1.y+290,10);sleep(200);
-        if(imgdect(template1, 120, 630, 600, 950)){
-            log("检测到第二个");
+        point1 = imgdect(template1, 120, 630, 510, 300);
+        if(point1){
             sleep(300);
             press(point1.x+80,point1.y+290,10);sleep(400);
             press(point1.x+80,point1.y+290,10);sleep(200);
-        }else{
-            log("没有检测到第二个");
         }
-
         swipe(700,1600,700,900,400);sleep(200);
         press(870,820,10);sleep(200);
         press(870,820,10);sleep(200);
@@ -118,11 +111,9 @@ function daily(){
         press(210,1760,10);sleep(200);
         press(210,1760,10);sleep(400);
 
-        //log("账号:"+ accid + ",每日资源-OK！");
         files.append(logurl, "账号:"+ accid + ",每日资源-OK！\n", encoding = 'utf-8');sleep(1000);
     }
     else{
-        //log("**账号:"+ accid + ",每日资源已被领取！");
         files.append(logurl, "**账号:"+ accid + ",每日资源已被领取！\t<----------\n", encoding = 'utf-8');sleep(1000);
     }
 }
@@ -140,11 +131,9 @@ function weekly(){
             press(755,1080,10);sleep(200);
         }
         press(point2.x+80,point2.y+290,10);sleep(200);
-        //log("账号:"+ accid + ",每周资源-OK！");
         files.append(logurl, "账号:"+ accid + ",每周资源-OK！\n", encoding = 'utf-8');sleep(1000);
     }
     else{
-        //log("**账号:"+ accid + ",每周资源已被领取！");
         files.append(logurl, "**账号:"+ accid + ",每周资源已被领取！\n", encoding = 'utf-8');sleep(1000);
     }
 }
@@ -163,7 +152,6 @@ function yuanbao() {
         press(760,1230,10);sleep(400);
         press(540,980,10);sleep(200);
         press(540,980,10);sleep(1000);
-        //log("账号:"+ accid + ",使用元宝红包-OK！");
         files.append(logurl, "账号:"+ accid + ",使用元宝红包-OK！\n", encoding = 'utf-8');sleep(1000);
     }
     else{
@@ -177,11 +165,9 @@ function yuanbao() {
             press(760,1230,10);sleep(400);
             press(540,980,10);sleep(200);
             press(540,980,10);sleep(1000);
-            //log("账号:"+ accid + ",使用元宝红包-OK！");
             files.append(logurl, "账号:"+ accid + ",使用元宝红包-OK！\n", encoding = 'utf-8');sleep(1000);
         }
         else{
-            //log("**账号:"+ accid + ",未找到元宝红包");
             files.append(logurl, "**账号:"+ accid + ",未找到元宝红包！  \t<----------\n", encoding = 'utf-8');sleep(1000);
         }
     }
@@ -212,7 +198,6 @@ function saveimg(){
         images.save(img, dir+"/imgtemp/"+accid+".png", format = "png", quality = 100);sleep(200);
     }
     sleep(200);
-    //log("账号:"+ accid + ",元宝截图-OK！");
     files.append(logurl, "账号:"+ accid + ",元宝截图-OK！\n\n", encoding = 'utf-8');sleep(200);
 }
 
@@ -285,7 +270,7 @@ function base(){
 function main(){
     var date = new Date();
     var time = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
-    logurl = dir+"/log_"+time+".txt"
+    logurl = dir+"/log/log_"+time+".txt"
     files.write(logurl, "", encoding = "utf-8");sleep(100);
     files.append(logurl, "\n********** "+time+" **********\n", encoding = 'utf-8');sleep(200);
     for(n = n0;n <= N;n++){
