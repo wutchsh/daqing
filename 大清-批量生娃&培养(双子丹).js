@@ -5,7 +5,7 @@
     后宫自动谈心生娃，达到指定数量后，跳转上书房
     自动取名，喂汤，一键培养
 */
-
+  
 auto();
 images.requestScreenCapture();sleep(200);
 var N = 10;      // 定义上书房空位或者生几个娃进行一次培养
@@ -29,6 +29,9 @@ function tanxin(){
         log("已使用双子丹！");
         press(1015,650,20);sleep(300);
         press(1030,55,20);sleep(300);
+    }else{
+        log("未检测到双子丹界面，停止运行");
+        exit();
     }
 
     //平均3次谈心可获得一个娃娃，最多需要3*N次，极限7*N
@@ -51,7 +54,7 @@ function tanxin(){
                 press(720,1000,10);sleep(100);
                 press(720,1000,10);sleep(100);
                 press(720,1000,10);sleep(100);
-                press(720,1000,10);sleep(1500);
+                press(720,1000,10);sleep(1500); //缩短皇子见面关闭后转入双子丹界面的停顿时间
                 // 重新使用双子丹
                 press(180,600,10);sleep(300);
                 press(90,640,10);sleep(300);
@@ -65,8 +68,10 @@ function tanxin(){
                     log("已使用双子丹！");
                     press(1015,650,20);sleep(300);
                     press(1030,55,20);sleep(300);
+                }else{
+                    log("未检测到双子丹界面，停止运行");
+                    exit();
                 }
-
             }
         }
     }
@@ -104,7 +109,7 @@ function name(m){
                 press(540,1070,10);sleep(200);
             }
         }
-        sleep(800);
+        sleep(400);     // 缩短取名间隔
         if(images.detectsColor(captureScreen(), "#ff504844", 810,485+295*i)){
             log("取名失败！\t<--------");
         }else{
