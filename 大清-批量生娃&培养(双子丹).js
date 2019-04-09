@@ -8,8 +8,8 @@
   
 auto();
 images.requestScreenCapture();sleep(200);
-var N = 6;      // 定义上书房空位或者生几个娃进行一次培养
-var M = 4;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
+var N = 4;      // 定义上书房空位或者生几个娃进行一次培养
+var M = 20;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
 
 
 function tanxin(){
@@ -82,7 +82,11 @@ function tanxin(){
             }
         }
     }
-    files.append(logurl, "**精力丹使用完毕！\t\t<----------\n", encoding = 'utf-8');sleep(200);
+    log("**精力丹使用完毕！\t\t<----------\n");sleep(200);
+    for(p=0;p<30;p++){
+        device.vibrate(1000);sleep(500);
+        device.cancelVibration();sleep(200);
+    }
     exit();
 
 }
@@ -96,7 +100,7 @@ function name(m){
         press(540,1070,10);sleep(200);
         // 敏感词检测优先
         while(images.detectsColor(captureScreen(), "#ffce4727", 540,1085)){
-            files.append(logurl, "**检测到敏感词汇，重新随机命令！\t<----------\n", encoding = 'utf-8');
+            log("**检测到敏感词汇，重新随机命令！\t<----------\n");
             press(540,1085,10);sleep(200);
             press(810,870,10);sleep(200);
             press(540,1070,10);sleep(20);
@@ -104,12 +108,12 @@ function name(m){
         }
         // 重名检测
         while(images.detectsColor(captureScreen(), "#ff432920", 540,700)){
-            files.append(logurl, "**检测到重名，重新随机命令！\t<----------\n", encoding = 'utf-8');sleep(700);
+            log("**检测到重名，重新随机命令！\t<----------\n");sleep(700);
             press(810,870,10);sleep(200);
             press(540,1070,10);sleep(20);
             press(540,1070,10);sleep(200);
             while(images.detectsColor(captureScreen(), "#ffce4727", 540,1085)){
-                files.append(logurl, "**检测到敏感词汇，重新随机命令！\t<----------\n", encoding = 'utf-8');
+                log("**检测到敏感词汇，重新随机命令！\t<----------\n");
                 press(540,1085,10);sleep(200);
                 press(810,870,10);sleep(200);
                 press(540,1070,10);sleep(20);
@@ -125,7 +129,6 @@ function name(m){
         }
         sleep(800);     // 取名间隔
     }
-    // files.append(logurl, "批量取名完成\n", encoding = 'utf-8');
     log("批量取名完成");
 }
 
@@ -135,7 +138,7 @@ function jiasu(m){
     // 检测是否勾选专人培养
     if(images.detectsColor(captureScreen(), "#ff227281", 247,1845)){
         press(247,1845,20);sleep(1500);  //打开专人培养
-        files.append(logurl, "打开专人培养！\n", encoding = 'utf-8');
+        log("打开专人培养!");
     }
     if(images.detectsColor(captureScreen(), "#ff227281", 247,1845)){
         log("打开专人培养失败！");
@@ -146,7 +149,7 @@ function jiasu(m){
     // 循环快捷培养
     for(i=0;i<m;i++){
         if(images.detectsColor(captureScreen(), "#ff656565", 810,488)){
-            files.append(logurl, "**活力丹用完了！\t\t<----------\n", encoding = 'utf-8');
+            log("**活力丹用完了！\t\t<----------\n");
             exit();
         }
         // 循环检测培养是否成功
@@ -156,14 +159,14 @@ function jiasu(m){
             press(755,1110,10);sleep(3000);
         }
     }
-    files.append(logurl, "批量快捷培养完成！\n", encoding = 'utf-8');
+    log("批量快捷培养完成！\n");
 
     // 循环封爵
     for(i=0;i<m;i++){
         press(895,445,10);sleep(1000);
         press(895,445,10);sleep(1000);
     }
-    files.append(logurl, "批量封爵完成！\n", encoding = 'utf-8');
+    log("批量封爵完成！\n");
 }
 
 function peiyang(N){
@@ -177,15 +180,13 @@ function peiyang(N){
         name(N-5);sleep(500);
         jiasu(N-5);sleep(500);
     }
-    files.append(logurl, "批量培养(取名、加速、培养、封爵)完成！\n", encoding = 'utf-8');
+    log("批量培养(取名、加速、培养、封爵)完成！\n");
 }
 
 function main(){
     var date = new Date();
     var time = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
-    logurl = "/sdcard/脚本/daqing/log/log_"+time+".txt";
-    files.write(logurl, "", encoding = "utf-8");sleep(100);
-    files.append(logurl, "********** "+time+" **********\n\n", encoding = 'utf-8');sleep(200);
+    log("********** "+time+" **********\n\n");
     // 从后宫进入三宫六院再进入谈心界面
     swipe(200,1050,800,1050,300);sleep(200);
     press(730,830,10);sleep(500);
@@ -195,9 +196,9 @@ function main(){
         var k = j+1;
         sleep(500);
         press(690,1020,20);sleep(1000);  // 直接返回谈心界面
-        files.append(logurl, "##### 第 "+k+" 轮循环完成 #####\n\n", encoding = 'utf-8');
+        log("##### 第 "+k+" 轮循环完成 #####\n\n");
     }
-    files.append(logurl, "批量生娃完成，累计生娃："+ M*N +"\n\n", encoding = 'utf-8');
+    log("批量生娃完成，累计生娃："+ M*N +"\n\n");
     for(p=0;p<30;p++){
         device.vibrate(1000);sleep(500);
         device.cancelVibration();sleep(200);
