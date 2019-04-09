@@ -24,6 +24,11 @@ function tanxin(){
         log("开始使用双子丹");
         press(820,1090,20);sleep(300);
         press(1015,650,20);sleep(300);
+        // 循环检测双子丹界面是否退出失败
+        while(images.detectsColor(captureScreen(), "#fff1f2dc", 840,1090)){
+            log("双子丹界面退出失败，重新退出！");
+            press(1015,650,20);sleep(300);
+        }
         press(1030,55,20);sleep(300);
     }else if(images.detectsColor(img, "#fff1f2dc", 840,1090)){
         log("已使用双子丹！");
