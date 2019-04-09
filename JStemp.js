@@ -5,12 +5,20 @@ images.requestScreenCapture();sleep(200);
 // var Array = [3,4,6,8,10,11,15,16,18,19,21,25,29,30,31,35,36,40];
 
 // var img = captureScreen();sleep(500);
-// var point = [840,1090];
+// var point = [895,488];
 // var c = images.pixel(img,point[0],point[1]);
 // var msg = "";
 // msg += colors.toString(c);
 // toastLog(msg)
 // press(point[0],point[1],1000);
+
+// while(!images.detectsColor(captureScreen(), "#ff4e4743", 810,488)){
+//     press(895,488,10);sleep(50);
+//     press(895,488,10);sleep(20);
+//     press(755,1110,10);sleep(10);
+//     log("<----------->");
+// }
+
 
 // if(images.detectsColor(captureScreen(), "#ff227281", 247,1845)){
 //     press(247,1845,20);sleep(1500);  //打开专人培养
@@ -19,33 +27,33 @@ images.requestScreenCapture();sleep(200);
 // }
 
 
-// 批量提亲-confirm
-var id = 1138;
-function tiqin(){
-    press(540,860,10);sleep(200);
-    press(740,1120,10);sleep(400);
-    setText(0,id);sleep(500);
-    press(540,660,10);sleep(500);
-    press(340,1290,10);sleep(1800);
-}
-for(i=0;i<8;i++){
-    for(j=0;j<4;j++){
-        press(920,528+318*j,10);sleep(400);
-        tiqin();
-    }
-    swipe(540,1400,540,660,300);sleep(500);
-    press(920,1220,10);sleep(200);
-    tiqin();
-    swipe(540,1400,540,660,300);sleep(500);
-    press(920,1538,10);sleep(200);
-    tiqin();
-    press(960,1760,10);sleep(200);
-}
+// // 批量提亲-confirm
+// var id = 1138;
+// function tiqin(){
+//     press(540,860,10);sleep(200);
+//     press(740,1120,10);sleep(800);
+//     setText(0,id);sleep(500);
+//     press(540,660,10);sleep(500);
+//     press(340,1290,10);sleep(1800);
+// }
+// for(i=0;i<8;i++){
+//     for(j=0;j<4;j++){
+//         press(920,528+318*j,10);sleep(400);
+//         tiqin();
+//     }
+//     swipe(540,1400,540,660,300);sleep(500);
+//     press(920,1220,10);sleep(200);
+//     tiqin();
+//     swipe(540,1400,540,660,300);sleep(500);
+//     press(920,1538,10);sleep(200);
+//     tiqin();
+//     press(960,1760,10);sleep(200);
+// }
 
 
 // // 批量买礼包-confirm
-// var n = 49;
-// press(910,730,10);sleep(100);
+// var n = 60;
+// press(910,1110,10);sleep(100);
 // swipe(300,980,900,980,50);sleep(100);
 // press(750,1100,10);sleep(100);
 // // 购买界面检测
@@ -54,7 +62,7 @@ for(i=0;i<8;i++){
 //     press(755,1080,10);sleep(200);
 // }
 // for(i=0;i<n;i++){
-//     press(910,730,10);sleep(100);
+//     press(910,1110,10);sleep(100);
 //     swipe(300,980,900,980,50);sleep(100);
 //     press(750,1100,10);sleep(100);
 //     press(1030,1110,10);sleep(100);
@@ -74,8 +82,9 @@ for(i=0;i<8;i++){
 // tappoint(p1,300000);
 
 
-
-
+// for(i=0;i<20;i++){
+// press(810,870,10);sleep(50);
+// }
 
 // var date = new Date();
 // var time = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
@@ -161,31 +170,28 @@ for(i=0;i<8;i++){
 //     press(780,760,10);sleep(200);
 // }
 
-// // // 重名检测
-// press(540,1070,10);sleep(20);
-// press(540,1070,10);sleep(200);
-// // 敏感词检测优先
-// while(images.detectsColor(captureScreen(), "#ffce4727", 540,1085)){
-//     log("检测到敏感词汇，重新随机命令！");
-//     press(540,1085,10);sleep(200);
-//     press(810,870,10);sleep(200);
-//     press(540,1070,10);sleep(20);
-//     press(540,1070,10);sleep(200);
-// }
-// // 重名检测
-// while(images.detectsColor(captureScreen(), "#ff432920", 540,700)){
-//     sleep(500);
-//     press(810,870,10);sleep(200);
-//     press(540,1070,10);sleep(20);
-//     press(540,1070,10);sleep(200);
-//     log("1");
-//     while(images.detectsColor(captureScreen(), "#ffce4727", 540,1085)){
-//         log("检测到敏感词汇，重新随机命令！");
-//         press(810,870,10);sleep(200);
-//         press(540,1070,10);sleep(20);
-//         press(540,1070,10);sleep(200);
-//     }
-// }
+// 重名检测
+press(540,1070,10);sleep(200);
+// 敏感词检测优先
+while(images.detectsColor(captureScreen(), "#ffce4727", 540,1085)){
+    log("**检测到敏感词汇，重新随机命令！\t<----------\n");
+    press(540,1085,10);sleep(200);
+    press(810,870,10);sleep(200);
+    press(540,1070,10);sleep(250);
+}
+// 重名检测
+while(images.detectsColor(captureScreen(), "#ff432920", 540,700)){
+    log("**检测到重名，重新随机命令！\t<----------\n");sleep(1000);
+    press(810,870,10);sleep(200);
+    press(540,1070,10);sleep(20);
+    press(540,1070,10);sleep(200);
+    while(images.detectsColor(captureScreen(), "#ffce4727", 540,1085)){
+        log("检测到敏感词汇，重新随机命令！");
+        press(810,870,10);sleep(200);
+        press(540,1070,10);sleep(20);
+        press(540,1070,10);sleep(200);
+    }
+}
 
 
 // var logurl = images.read("/sdcard/脚本/daqing/log.txt");
