@@ -148,6 +148,7 @@ function jiasu(m){
             files.append(logurl, "**活力丹用完了！\t\t<----------\n", encoding = 'utf-8');
             exit();
         }
+        // 循环检测培养是否成功
         while(!images.detectsColor(captureScreen(), "#ff4e4743", 810,488+295*i)){
             press(895,488+295*i,10);sleep(50);
             press(895,488+295*i,10);sleep(200);
