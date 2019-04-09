@@ -46,9 +46,8 @@ function tanxin(){
     //平均3次谈心可获得一个娃娃，最多需要3*N次，极限7*N
     for(i=0;i<7*N;i++){
         press(890,1845,10);sleep(150);  //点击谈心
-        press(890,1845,10);sleep(300);
-        press(890,1845,10);sleep(2000);  //连续点击关闭弹出的妃子界面
-        // press(720,1000,10);sleep(1200);
+        press(890,1845,10);sleep(300);  //连续点击关闭弹出的妃子界面
+        press(890,1845,10);sleep(2000);
         var stat = images.detectsColor(captureScreen(), "#fff1e7cb", 730,1180);
         if(stat){
             n += 2;
@@ -62,7 +61,7 @@ function tanxin(){
                 press(720,1000,10);sleep(100);
                 press(720,1000,10);sleep(100);
                 press(720,1000,10);sleep(100);
-                press(720,1000,10);sleep(1500); //缩短皇子见面关闭后转入双子丹界面的停顿时间
+                press(720,1000,10);sleep(1500); //缩短皇子界面关闭后转入双子丹界面的停顿时间
                 // 重新使用双子丹
                 press(180,600,10);sleep(300);
                 press(90,640,10);sleep(300);
@@ -146,7 +145,7 @@ function jiasu(m){
         log("打开专人培养!");
     }
     if(images.detectsColor(captureScreen(), "#ff227281", 247,1845)){
-        log("打开专人培养失败！");
+        log("已打开专人培养失败！");
     }
 
     press(685,1850,10);sleep(1500);  // 一键培养
