@@ -9,7 +9,7 @@
 auto();
 images.requestScreenCapture();sleep(200);
 var N = 10;      // 定义上书房空位或者生几个娃进行一次培养
-var M = 2;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
+var M = 40;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
 
 
 function tanxin(){
@@ -31,6 +31,10 @@ function tanxin(){
         press(1030,55,20);sleep(300);
     }else{
         log("未检测到双子丹界面，停止运行");
+        for(p=0;p<30;p++){
+            device.vibrate(1000);sleep(500);
+            device.cancelVibration();sleep(200);
+        }
         exit();
     }
 
@@ -70,6 +74,10 @@ function tanxin(){
                     press(1030,55,20);sleep(300);
                 }else{
                     log("未检测到双子丹界面，停止运行");
+                    for(p=0;p<30;p++){
+                        device.vibrate(1000);sleep(500);
+                        device.cancelVibration();sleep(200);
+                    }
                     exit();
                 }
             }
@@ -97,7 +105,7 @@ function name(m){
         }
         // 重名检测
         while(images.detectsColor(captureScreen(), "#ff432920", 540,700)){
-            files.append(logurl, "**检测到重名，重新随机命令！\t<----------\n", encoding = 'utf-8');sleep(500);
+            files.append(logurl, "**检测到重名，重新随机命令！\t<----------\n", encoding = 'utf-8');sleep(700);
             press(810,870,10);sleep(200);
             press(540,1070,10);sleep(20);
             press(540,1070,10);sleep(200);
@@ -140,9 +148,11 @@ function jiasu(m){
             files.append(logurl, "**活力丹用完了！\t\t<----------\n", encoding = 'utf-8');
             exit();
         }
-        press(895,488+295*i,10);sleep(50);
-        press(895,488+295*i,10);sleep(200);
-        press(755,1110,10);sleep(3000);
+        while(!images.detectsColor(captureScreen(), "#ff4e4743", 810,488+295*i)){
+            press(895,488+295*i,10);sleep(50);
+            press(895,488+295*i,10);sleep(200);
+            press(755,1110,10);sleep(3000);
+        }
     }
     files.append(logurl, "批量快捷培养完成！\n", encoding = 'utf-8');
 
@@ -185,6 +195,10 @@ function main(){
         files.append(logurl, "##### 第 "+k+" 轮循环完成 #####\n\n", encoding = 'utf-8');
     }
     files.append(logurl, "批量生娃完成，累计生娃："+ M*N +"\n\n", encoding = 'utf-8');
+    for(p=0;p<30;p++){
+        device.vibrate(1000);sleep(500);
+        device.cancelVibration();sleep(200);
+    }
 }
 
 main();
