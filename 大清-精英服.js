@@ -11,7 +11,7 @@ var n = 0;
 var acc = "";
 var accid = "";
 var Array = [];
-var mode = 0;
+var mode = 1;
 var logurl = "";
 var template = images.read(dir+"/temp.png");
 var template1 = images.read(dir+"/daily.png");
@@ -59,7 +59,7 @@ function inputacc(){
     else{
         accid = acc + n;
     }
-    click(540,720);sleep(500);
+    click(540,720);sleep(1000); 
     setText(0,accid);sleep(500);
     press(540,180,10);sleep(500);
     press(540,1120,10);sleep(500);   //登录账号
@@ -273,9 +273,14 @@ function main(){
     logurl = dir+"/log/log_"+time+".txt"
     files.write(logurl, "", encoding = "utf-8");sleep(100);
     files.append(logurl, "\n********** "+time+" **********\n", encoding = 'utf-8');sleep(200);
-    for(n = n0;n <= N;n++){
-        sleep(500);
-        base();
+    // for(n = n0;n <= N;n++){
+    //     sleep(500);
+    //     base();
+    // }
+    // 运行结束循环震动通知
+    for(k=0;k<30;k++){
+        device.vibrate(1000);sleep(500);
+        device.cancelVibration();sleep(200);
     }
 }
 
