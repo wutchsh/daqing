@@ -100,7 +100,6 @@ function name(m){
     for(i=0;i<m;i++){
         press(895,385+295*i,10);sleep(200);
         press(810,870,10);sleep(100);   //随机取名
-        press(540,1070,10);sleep(20);
         press(540,1070,10);sleep(200);
         // 敏感词检测优先
         while(images.detectsColor(captureScreen(), "#ffce4727", 540,1085)){
@@ -108,11 +107,11 @@ function name(m){
             press(540,1085,10);sleep(200);
             press(810,870,10);sleep(200);
             press(540,1070,10);sleep(20);
-            press(540,1070,10);sleep(200);
+            press(540,1070,10);sleep(250);
         }
         // 重名检测
         while(images.detectsColor(captureScreen(), "#ff432920", 540,700)){
-            log("**检测到重名，重新随机命令！\t<----------\n");sleep(700);
+            log("**检测到重名，重新随机命令！\t<----------\n");sleep(1000);
             press(810,870,10);sleep(200);
             press(540,1070,10);sleep(20);
             press(540,1070,10);sleep(200);
@@ -121,12 +120,14 @@ function name(m){
                 press(540,1085,10);sleep(200);
                 press(810,870,10);sleep(200);
                 press(540,1070,10);sleep(20);
-                press(540,1070,10);sleep(200);
+                press(540,1070,10);sleep(250);
             }
         }
         if(images.detectsColor(captureScreen(), "#ff504844", 810,485+295*i)){
             log("取名失败！\t<--------");
-            name();
+            for(i=0;i<10;i++){
+                press(810,870,10);sleep(50);
+            }
             log("重新取名");
         }else{
             log("取名成功！");
