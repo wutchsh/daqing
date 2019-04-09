@@ -28,7 +28,7 @@ if(mode == 0){
 }
 else if(mode == 1){
     acc = "TaIzu";
-    n0 = 1;
+    n0 = 13;
     N = 50;
     Array = [16,17,18,19,20,21,22];
 }
@@ -273,11 +273,11 @@ function main(){
     logurl = dir+"/log/log_"+time+".txt"
     files.write(logurl, "", encoding = "utf-8");sleep(100);
     files.append(logurl, "\n********** "+time+" **********\n", encoding = 'utf-8');sleep(200);
-    // for(n = n0;n <= N;n++){
-    //     sleep(500);
-    //     base();
-    // }
-    // 运行结束循环震动通知
+    for(n = n0;n <= N;n++){
+        sleep(500);
+        base();
+    }
+    运行结束循环震动通知
     for(k=0;k<30;k++){
         device.vibrate(1000);sleep(500);
         device.cancelVibration();sleep(200);
