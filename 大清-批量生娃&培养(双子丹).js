@@ -8,8 +8,8 @@
   
 auto();
 images.requestScreenCapture();sleep(200);
-var N = 10;      // 定义上书房空位或者生几个娃进行一次培养
-var M = 40;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
+var N = 6;      // 定义上书房空位或者生几个娃进行一次培养
+var M = 4;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
 
 
 function tanxin(){
@@ -43,10 +43,9 @@ function tanxin(){
         press(890,1845,10);sleep(150);  //点击谈心
         press(890,1845,10);sleep(300);
         press(890,1845,10);sleep(2000);  //连续点击关闭弹出的妃子界面
-        press(720,1000,10);sleep(1200);
+        // press(720,1000,10);sleep(1200);
         var stat = images.detectsColor(captureScreen(), "#fff1e7cb", 730,1180);
         if(stat){
-            sleep(800);
             n += 2;
             log("当前皇子数量："+n);
             if(n >= N){
@@ -117,12 +116,14 @@ function name(m){
                 press(540,1070,10);sleep(200);
             }
         }
-        sleep(400);     // 缩短取名间隔
         if(images.detectsColor(captureScreen(), "#ff504844", 810,485+295*i)){
             log("取名失败！\t<--------");
+            name();
+            log("重新取名");
         }else{
             log("取名成功！");
         }
+        sleep(800);     // 取名间隔
     }
     // files.append(logurl, "批量取名完成\n", encoding = 'utf-8');
     log("批量取名完成");
@@ -192,7 +193,8 @@ function main(){
         tanxin();
         peiyang(N);
         var k = j+1;
-        press(690,1020,20);sleep(1500);  // 直接返回谈心界面
+        sleep(500);
+        press(690,1020,20);sleep(1000);  // 直接返回谈心界面
         files.append(logurl, "##### 第 "+k+" 轮循环完成 #####\n\n", encoding = 'utf-8');
     }
     files.append(logurl, "批量生娃完成，累计生娃："+ M*N +"\n\n", encoding = 'utf-8');
