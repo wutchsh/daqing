@@ -11,7 +11,7 @@ var n = 0;
 var acc = "";
 var accid = "";
 var Array = [];
-var mode = 1;
+var mode = 0;
 var logurl = "";
 var template = images.read(dir+"/temp.png");
 var template1 = images.read(dir+"/daily.png");
@@ -28,7 +28,7 @@ if(mode == 0){
 }
 else if(mode == 1){
     acc = "TaIzu";
-    n0 = 13;
+    n0 = 1;
     N = 50;
     Array = [16,17,18,19,20,21,22];
 }
@@ -83,31 +83,31 @@ function daily(){
     press(630,1830,10);sleep(500);  // 由主界面进入商城
     var point1 = imgdect(template1, 450, 630, 510, 300);
     if(point1){
-        sleep(300);
-        press(point1.x+80,point1.y+290,10);sleep(400);
+        sleep(150);
+        press(point1.x+80,point1.y+290,10);sleep(300);
         // 判断是否弹出购买确认界面
-        img = captureScreen();sleep(200);
+        img = captureScreen();sleep(100);
         if(images.detectsColor(img, "#ff0c8c93", 705,1080)){
-            press(870,1180,10);sleep(300);
+            press(870,1180,10);sleep(100);
             press(755,1080,10);sleep(200);
         }
-        press(point1.x+80,point1.y+290,10);sleep(500);
+        press(point1.x+80,point1.y+290,10);sleep(300);
 
         point1 = imgdect(template1, 120, 630, 510, 300);
         if(point1){
             sleep(300);
-            press(point1.x+80,point1.y+290,10);sleep(400);
-            press(point1.x+80,point1.y+290,10);sleep(200);
+            press(point1.x+80,point1.y+290,10);sleep(100);
+            press(point1.x+80,point1.y+290,10);sleep(600);
         }
         swipe(700,1600,700,900,400);sleep(200);
         press(870,820,10);sleep(200);
-        press(870,820,10);sleep(200);
+        press(870,820,10);sleep(300);
         press(210,1290,10);sleep(300);  // 淸帝碎片
         press(210,1290,10);sleep(300);
         press(540,1290,10);sleep(200);
-        press(540,1290,10);sleep(200);
+        press(540,1290,10);sleep(300);
         press(870,1290,10);sleep(200);
-        press(870,1290,10);sleep(200);
+        press(870,1290,10);sleep(300);
         press(210,1760,10);sleep(200);
         press(210,1760,10);sleep(400);
 
@@ -150,8 +150,8 @@ function yuanbao() {
         press(880,point0.y+450,10);sleep(400);
         swipe(300,1060,900,1060,100);sleep(600);
         press(760,1230,10);sleep(400);
-        press(540,980,10);sleep(200);
-        press(540,980,10);sleep(1000);
+        press(540,980,10);sleep(100);
+        press(540,980,10);sleep(500);
         files.append(logurl, "账号:"+ accid + ",使用元宝红包-OK！\n", encoding = 'utf-8');sleep(1000);
     }
     else{
@@ -164,7 +164,7 @@ function yuanbao() {
             swipe(300,1060,900,1060,100);sleep(600);
             press(760,1230,10);sleep(400);
             press(540,980,10);sleep(200);
-            press(540,980,10);sleep(1000);
+            press(540,980,10);sleep(500);
             files.append(logurl, "账号:"+ accid + ",使用元宝红包-OK！\n", encoding = 'utf-8');sleep(1000);
         }
         else{
@@ -277,7 +277,7 @@ function main(){
         sleep(500);
         base();
     }
-    运行结束循环震动通知
+    // 运行结束循环震动通知
     for(k=0;k<30;k++){
         device.vibrate(1000);sleep(500);
         device.cancelVibration();sleep(200);
