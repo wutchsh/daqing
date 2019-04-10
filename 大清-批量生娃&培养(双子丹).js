@@ -8,8 +8,8 @@
   
 auto();
 images.requestScreenCapture();sleep(200);
-var N = 4;      // 定义上书房空位或者生几个娃进行一次培养
-var M = 20;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
+var N = 2;      // 定义上书房空位或者生几个娃进行一次培养
+var M = 5;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
 
 
 function tanxin(){
@@ -44,7 +44,7 @@ function tanxin(){
     }
 
     //平均3次谈心可获得一个娃娃，最多需要3*N次，极限7*N
-    for(i=0;i<7*N;i++){
+    for(i=0;i<20*N;i++){
         press(890,1845,10);sleep(150);  //点击谈心
         press(890,1845,10);sleep(300);  //连续点击关闭弹出的妃子界面
         press(890,1845,10);sleep(2000);
@@ -149,7 +149,7 @@ function jiasu(m){
         log("已打开专人培养失败！");
     }
 
-    press(685,1850,10);sleep(1500);  // 一键培养
+    // press(685,1850,10);sleep(1500);  // 一键培养
 
     // 循环快捷培养
     for(i=0;i<m;i++){
@@ -191,7 +191,7 @@ function peiyang(N){
 function main(){
     var date = new Date();
     var time = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
-    log("********** "+time+" **********\n\n");
+    log("***** "+time+" *****\n\n");
     // 从后宫进入三宫六院再进入谈心界面
     swipe(200,1050,800,1050,300);sleep(200);
     press(730,830,10);sleep(500);
@@ -201,7 +201,7 @@ function main(){
         var k = j+1;
         sleep(500);
         press(690,1020,20);sleep(1000);  // 直接返回谈心界面
-        log("##### 第 "+k+" 轮循环完成 #####\n\n");
+        log("#### 第 "+k+" 轮循环完成 ####\n\n");
     }
     log("批量生娃完成，累计生娃："+ M*N +"\n\n");
     for(p=0;p<30;p++){
