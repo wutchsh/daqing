@@ -11,7 +11,7 @@ var n = 0;
 var acc = "";
 var accid = "";
 var Array = [];
-var mode = 0;
+var mode = 1;
 var logurl = "";
 var template = images.read(dir+"/temp.png");
 var template1 = images.read(dir+"/daily.png");
@@ -33,7 +33,7 @@ else if(mode == 1){
     Array = [16,17,18,19,20,21,22];
 }
 
-function imgdect(temp,x,y,w,h){
+function imgdect(temp,x,y,w,h){ 
     img0 = captureScreen();sleep(500);
     var point = images.findImage(img0, temp, {
         region: [x, y, w, h],
@@ -205,16 +205,16 @@ function vip(){
     press(980,200,10);sleep(2000);
     swipe(220,1720,850,1720,500);sleep(500);
     press(950,1800,10);sleep(200);
-    var point3 = imgdect(template3,20,1700,800,200);sleep(200);
-    var point4 = imgdect(template4,20,1700,800,200);sleep(200);
+    var point3 = imgdect(template3,20,1700,800,200);sleep(20);
+    var point4 = imgdect(template4,20,1700,800,200);sleep(20);
 
     // 领取累充奖励
     if(point3){
         press(point3.x+70,point3.y+70,10);sleep(200);
-        for(i=1;i<=50;i++){
-            press(920,770,10);sleep(10);press(920,770,10);sleep(10);
-            press(920,1170,10);sleep(10);press(920,1170,10);sleep(10);
-            press(920,1590,10);sleep(10);press(920,1590,10);sleep(10);
+        for(i=1;i<=70;i++){     //  默认70
+            press(920,770,10);sleep(10);press(920,770,10);sleep(20);
+            press(920,1170,10);sleep(10);press(920,1170,10);sleep(20);
+            press(920,1590,10);sleep(10);press(920,1590,10);sleep(20);
         }
         files.append(logurl, "账号:"+ accid + ",领取累充成功！\n", encoding = 'utf-8');sleep(200);
     }
@@ -224,7 +224,7 @@ function vip(){
     // 领取日充奖励
     if(point4){
         press(point4.x+70,point4.y+70,10);sleep(500);
-        for(i=1;i<=60;i++){
+        for(i=1;i<=60;i++){     //  默认60
             press(920,725,10);sleep(10);press(920,725,10);sleep(20);
             press(920,1345,10);sleep(10);press(920,1345,10);sleep(20);
         }
@@ -233,6 +233,11 @@ function vip(){
     else{
         files.append(logurl, "账号:"+ accid + ",检测日充失败！    \t<----------\n\n", encoding = 'utf-8');sleep(200);
     }
+    // 领取每周充值礼包
+    press(point4.x+280,point4.y+70,10);sleep(500);
+    press(920,700,10);sleep(100);
+    press(920,700,10);sleep(100);
+    press(920,700,10);sleep(500);
 }
 
 function base(){
@@ -254,7 +259,7 @@ function base(){
     weekly();
     press(1010,90,10);sleep(2000);
     
-    // 领取VIP充值礼包，需要时打开该功能
+    // // 领取VIP充值礼包，需要时打开该功能
     // vip();
     // press(1010,90,10);sleep(1000);
 
@@ -265,6 +270,7 @@ function base(){
 
     press(90,100,10);sleep(1000);   // 点击头像
     press(880,1850,10);sleep(1000); // 选择区服
+    log("账号"+accid+"--OK");
 }
 
 function main(){
@@ -283,5 +289,6 @@ function main(){
         device.cancelVibration();sleep(200);
     }
 }
+
 
 main();
