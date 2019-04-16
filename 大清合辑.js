@@ -28,7 +28,7 @@ function _TiQin(){
 
 function _LiBao(){
     // 批量买礼包-confirm
-    var n = 49;
+    var n = 60;
     press(910,730,10);sleep(100);
     swipe(300,980,900,980,50);sleep(100);
     press(750,1100,10);sleep(100);
@@ -57,3 +57,36 @@ function _YiFu(){
     tappoint(p1,100000);
 }
 
+function _imgdect(temp,x,y,w,h){
+    img0 = captureScreen();sleep(500);
+    var point = images.findImage(img0, temp, {
+        region: [x, y, w, h],
+        threshold: 0.8
+    });
+    return point;
+}
+
+function _inputacc(){
+    if(n < 10){
+        accid = acc + "0"+ n;
+    }
+    else{
+        accid = acc + n;
+    }
+    click(540,720);sleep(1000); 
+    setText(0,accid);sleep(500);
+    press(540,180,10);sleep(500);
+    press(540,1120,10);sleep(500);   //登录账号
+}
+
+function _account(){
+    sleep(500);
+    press(990,1710,10);sleep(500); // 开始切换账号
+    press(540,1040,10);sleep(500);  //按钮“切换账号”
+    inputacc();
+    while(images.detectsColor(captureScreen(), "#fff7f2d3", 250,925)){
+        files.append(logurl, "**账号:"+ accid +"：该账号未注册！\n\n", encoding = 'utf-8');sleep(500);
+        n += 1;
+        inputacc();
+    }
+}
