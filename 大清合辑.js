@@ -54,7 +54,7 @@ function _YiFu(){
             if(i%2000 == 0){
                 log(i);
                 if(images.detectsColor(captureScreen(), "#ff7f7f7f", p[0],p[1])){
-                    for(p=0;p<30;p++){
+                    for(p=0;p<20;p++){
                         device.vibrate(1000);sleep(500);
                         device.cancelVibration();sleep(200);
                     }
@@ -64,6 +64,10 @@ function _YiFu(){
         }
     }
     tappoint(p1,500000);
+    for(p=0;p<20;p++){
+        device.vibrate(1000);sleep(500);
+        device.cancelVibration();sleep(200);
+    }
 }
 
 function _imgdect(temp,x,y,w,h){
