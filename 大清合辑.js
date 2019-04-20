@@ -46,15 +46,24 @@ function _LiBao(){
 }
 
 function _YiFu(){
-    //亲密加点-confirm
     var p1 = [875,1190];
     var p2 = [380,1190];
     function tappoint(p,n){
         for(i=0;i<n;i++){
             press(p[0],p[1],5);sleep(15);
+            if(i%2000 == 0){
+                log(i);
+                if(images.detectsColor(captureScreen(), "#ff7f7f7f", p[0],p[1])){
+                    for(p=0;p<30;p++){
+                        device.vibrate(1000);sleep(500);
+                        device.cancelVibration();sleep(200);
+                    }
+                    exit();
+                }
+            }
         }
     }
-    tappoint(p1,100000);
+    tappoint(p1,500000);
 }
 
 function _imgdect(temp,x,y,w,h){
