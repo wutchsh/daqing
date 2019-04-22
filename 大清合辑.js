@@ -45,7 +45,7 @@ function _LiBao(){
     }
 }
 
-function _YiFu(){
+function _Qinmi(){
     var p1 = [875,1190];
     var p2 = [380,1190];
     function tappoint(p,n){
@@ -101,5 +101,14 @@ function _account(){
         files.append(logurl, "**账号:"+ accid +"：该账号未注册！\n\n", encoding = 'utf-8');sleep(500);
         n += 1;
         inputacc();
+    }
+}
+
+function _tuitu(){
+    while(true){
+        press(880,1670,10);sleep(10);
+        press(750,1120,10);sleep(10);
+        press(720,1440,10);sleep(10);
+        press(790,850,10);sleep(10);
     }
 }
