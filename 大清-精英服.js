@@ -11,7 +11,7 @@ var n = 0;
 var acc = "";
 var accid = "";
 var Array = [];
-var mode = 1;
+var mode = 0;
 var logurl = "";
 var template = images.read(dir+"/temp.png");
 var template1 = images.read(dir+"/daily.png");
@@ -24,7 +24,7 @@ if(mode == 0){
     acc = "csjyf";
     n0 = 0;
     N = 100;
-    Array = [3,4,6,8,10,11,15,16,18,19,21,25,29,30,31,35,36,40];
+    Array = [3,4,6,7,8,9,14,15,18,19,21,22,23,24,25,29,30,31,35,36,40];
 }
 else if(mode == 1){
     acc = "TaIzu";
@@ -211,7 +211,7 @@ function vip(){
     // 领取累充奖励
     if(point3){
         press(point3.x+70,point3.y+70,10);sleep(200);
-        for(i=1;i<=70;i++){     //  默认70
+        for(i=1;i<=60;i++){     //  默认60
             press(920,770,10);sleep(10);press(920,770,10);sleep(20);
             press(920,1170,10);sleep(10);press(920,1170,10);sleep(20);
             press(920,1590,10);sleep(10);press(920,1590,10);sleep(20);
@@ -224,9 +224,10 @@ function vip(){
     // 领取日充奖励
     if(point4){
         press(point4.x+70,point4.y+70,10);sleep(500);
-        for(i=1;i<=60;i++){     //  默认60
+        for(i=1;i<=70;i++){     //  默认70
             press(920,725,10);sleep(10);press(920,725,10);sleep(20);
-            press(920,1345,10);sleep(10);press(920,1345,10);sleep(20);
+            press(920,1345,10);sleep(10);press(920,1345,10);sleep(10);
+            press(920,1325,10);sleep(10);press(920,1345,10);sleep(15);
         }
         files.append(logurl, "账号:"+ accid + ",领取日充成功！\n\n", encoding = 'utf-8');sleep(200);
     }
@@ -237,8 +238,23 @@ function vip(){
     press(point4.x+280,point4.y+70,10);sleep(500);
     press(920,700,10);sleep(100);
     press(920,700,10);sleep(100);
-    press(920,700,10);sleep(500);
+    press(920,700,10);sleep(50);
+    press(920,700,10);sleep(1200);
 }
+
+//尚衣监
+function shangyijian(){
+    sleep(300);
+    for(i=0;i<4;i++){
+        press(540,350,10);sleep(300);
+    }
+    sleep(300);
+    for(i=0;i<20;i++){
+        press(630,780,10); sleep(50);
+        press(630,780,10); sleep(100);
+    }    
+}
+
 
 function base(){
     // 切换账号并进入珍宝阁道具界面
@@ -246,7 +262,7 @@ function base(){
     press(540,1600,10);sleep(500); // 登基&上朝，进入金銮殿界面
     press(540,1110,10);sleep(200);  //可能出现的领取充值礼包界面及VIP等级提升界面
     press(540,1110,10);sleep(200);
-    press(540,1110,10);sleep(5000);
+    press(540,1110,10);sleep(4500); //默认5000
     press(540,980,10);sleep(100);
     press(540,980,10);sleep(100);
     press(540,980,10);sleep(100);
@@ -267,6 +283,9 @@ function base(){
     yuanbao();
     saveimg();
     press(1010,90,10);sleep(1000);
+
+    // shangyijian();
+    // press(1010,90,10);sleep(1000);
 
     press(90,100,10);sleep(1000);   // 点击头像
     press(880,1850,10);sleep(1000); // 选择区服
