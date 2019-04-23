@@ -15,6 +15,11 @@ function tappoint(p,n){
                 }
                 exit();
             }
+            if(images.detectsColor(captureScreen(), "#ff0fa4a5", 540,1070)){
+                log("检测到连接失败！")
+                press(540,1070,10);sleep(20);
+                press(540,1070,10);sleep(200);
+            }
         }
     }
 }
