@@ -11,7 +11,7 @@ var n = 0;
 var acc = "";
 var accid = "";
 var Array = [];
-var mode = 0;
+var mode = 1;
 var logurl = "";
 var template = images.read(dir+"/temp.png");
 var template1 = images.read(dir+"/daily.png");
@@ -76,6 +76,31 @@ function account(){
         inputacc();
     }
 }
+
+//临时领取福利邮件
+function mail(){
+    if(images.detectsColor(captureScreen(), "#ffea4837", 1045,1485)){
+        log("检测到未读邮件！");
+        press(1000,1530,10);sleep(400);
+        var mailimg = images.read(dir+"/mail.png");
+        var mailpoint = imgdect(mailimg, 50, 330, 250, 200);
+        if(mailpoint){
+            log("已定位未读邮件！");
+            press(mailpoint.x+80,mailpoint.y+80,10);sleep(200);
+            var lingquimg = images.read(dir+"/lingqu.png");
+            var lingqupoint = imgdect(lingquimg, 400, 600, 280, 1100);
+            if(lingqupoint){
+                press(lingqupoint.x+110,lingqupoint.y+35,10);sleep(100);
+                press(lingqupoint.x+110,lingqupoint.y+35,10);sleep(300);
+                press(lingqupoint.x+110,lingqupoint.y+35,10);sleep(200);
+                log("领取邮件成功");sleep(100);
+            }
+        }
+    }else{
+        log("未检测到未读邮件！");sleep(200);
+    }
+}
+
 
 // 每日资源（元宝红包、升爵套装、升星碎片）
 function daily(){
@@ -285,6 +310,10 @@ function base(){
     press(1010,90,10);sleep(1000);
 
     // shangyijian();
+    // press(1010,90,10);sleep(1000);
+
+    // // 领取邮件福利
+    // mail();
     // press(1010,90,10);sleep(1000);
 
     press(90,100,10);sleep(1000);   // 点击头像
