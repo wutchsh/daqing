@@ -11,7 +11,7 @@ var n = 0;
 var acc = "";
 var accid = "";
 var Array = [];
-var mode = 1;
+var mode = 0;
 var logurl = "";
 var template = images.read(dir+"/temp.png");
 var template1 = images.read(dir+"/daily.png");
@@ -22,7 +22,7 @@ var template5 = images.read(dir+"/hongbao.png");
 
 if(mode == 0){
     acc = "csjyf";
-    n0 = 0;
+    n0 = 1;
     N = 100;
     Array = [3,4,6,7,8,9,14,15,18,19,21,22,23,24,25,29,30,31,35,36,40];
 }
@@ -127,6 +127,13 @@ function daily(){
         swipe(700,1600,700,900,400);sleep(200);
         press(870,820,10);sleep(200);
         press(870,820,10);sleep(300);
+        if(images.detectsColor(captureScreen(), "#ffe5e2ce", 540,1135)){
+            log("检测到购买每日资源卡住！");
+            press(950,520,10);sleep(200);
+            swipe(700,1600,700,900,400);sleep(200);
+            press(870,820,10);sleep(200);
+            press(870,820,10);sleep(300);
+        }
         press(210,1290,10);sleep(300);  // 淸帝碎片
         press(210,1290,10);sleep(300);
         press(540,1290,10);sleep(200);
