@@ -22,7 +22,7 @@ var template5 = images.read(dir+"/hongbao.png");
 
 if(mode == 0){
     acc = "csjyf";
-    n0 = 1;
+    n0 = 0;
     N = 100;
     Array = [3,4,6,7,8,9,14,15,18,19,21,22,23,24,25,29,30,31,35,36,40];
 }
@@ -105,7 +105,7 @@ function mail(){
 // 每日资源（元宝红包、升爵套装、升星碎片）
 function daily(){
     sleep(1000);
-    press(630,1830,10);sleep(500);  // 由主界面进入商城
+    press(630,1830,10);sleep(800);  // 由主界面进入商城
     var point1 = imgdect(template1, 450, 630, 510, 300);
     if(point1){
         sleep(150);
