@@ -25,7 +25,7 @@ function main() {
         sleep(70000);
         threads.shutDownAll();
     });
-    sleep(70000);toastLog("划船结束！");
+    sleep(65000);toastLog("划船结束！");
 }
 
 main();
