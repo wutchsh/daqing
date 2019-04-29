@@ -166,3 +166,16 @@ function _QiangHua(){
         }
     }
 }
+
+function _ShengJi(){
+    var x = device.width*797/1080;
+    var y = device.height*640/1920;
+    var n = 20;
+    function upgrade(){
+        for(i=0;i<2000000;i++){
+            press(x,y,n);
+            sleep(n);
+        }
+    }
+    upgrade();
+}
