@@ -1,14 +1,27 @@
 //亲密加点
 auto();
 images.requestScreenCapture();sleep(100);
+device.setBrightness(0);
+
 var p1 = [875,1190];
 var p2 = [380,1190];
+tappoint(p2,500000);
+
+device.setBrightness(5);
+Power();
+for(p=0;p<20;p++){
+    device.vibrate(1000);sleep(500);
+    device.cancelVibration();sleep(200);
+}
+
 function tappoint(p,n){
     for(i=0;i<n;i++){
         press(p[0],p[1],5);sleep(15);
-        if(i%20000 == 0){
+        if(i%10000 == 0){
             log(i);
             if(images.detectsColor(captureScreen(), "#ff7f7f7f", p[0],p[1])){
+                device.setBrightness(5);
+                Power();
                 for(p=0;p<20;p++){
                     device.vibrate(1000);sleep(500);
                     device.cancelVibration();sleep(200);
@@ -22,9 +35,4 @@ function tappoint(p,n){
             }
         }
     }
-}
-tappoint(p1,500000);
-for(p=0;p<20;p++){
-    device.vibrate(1000);sleep(500);
-    device.cancelVibration();sleep(200);
 }
