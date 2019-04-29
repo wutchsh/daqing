@@ -140,3 +140,29 @@ function _huachuan(){
     
     main();
 }
+
+function _QiangHua(){
+    //淸帝强化配点
+    var point = [830,970];      //待强化淸帝坐标
+    for(i=0;i<5;i++){
+        press(point[0],point[1],10);sleep(20);
+        press(point[0],point[1],10);sleep(400);
+        if(images.detectsColor(captureScreen(), "#ff0fa0a2", 540,1380)){
+            press(540,1380,10);sleep(200);
+            press(755,1110,10);sleep(400);
+            press(540,1000,10);sleep(20);
+            press(540,1000,10);sleep(20);
+            press(540,1000,10);sleep(400);
+            press(755,1195,10);sleep(200);
+            press(856,1053,10);sleep(300);
+            swipe(300,965,900,965,200);sleep(200);
+            press(755,1130,10);sleep(200);
+            press(770,1280,10);sleep(200);
+            press(755,1110,10);sleep(50);
+            press(540,1380,10);sleep(200);
+        }else{
+            log("道具不足！");
+            exit();
+        }
+    }
+}
