@@ -329,6 +329,7 @@ function base(){
 }
 
 function main(){
+    device.setBrightness(0);
     var date = new Date();
     var time = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
     logurl = dir+"/log/log_"+time+".txt"
@@ -338,12 +339,13 @@ function main(){
         sleep(500);
         base();
     }
-    // 运行结束循环震动通知
+    // 运行结束关闭屏幕并循环震动通知
+    Power();                    //Root权限
+    device.setBrightness(5);
     for(k=0;k<30;k++){
         device.vibrate(1000);sleep(500);
         device.cancelVibration();sleep(200);
     }
 }
-
 
 main();
