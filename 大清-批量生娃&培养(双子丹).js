@@ -124,13 +124,13 @@ function name(m){
             }
         }
         if(images.detectsColor(captureScreen(), "#ff504844", 810,485+295*i)){
-            log("取名失败！\t<--------");
+            log("\t取名失败！\t<--------");
             for(i=0;i<10;i++){
                 press(810,870,10);sleep(50);
             }
-            log("重新取名");
+            log("\t重新取名");
         }else{
-            log("取名成功！");
+            log("\t取名成功！");
         }
         sleep(800);     // 取名间隔
     }
@@ -154,7 +154,7 @@ function jiasu(m){
     // 循环快捷培养
     for(i=0;i<m;i++){
         if(images.detectsColor(captureScreen(), "#ff656565", 810,488)){
-            log("**活力丹用完了！\t\t<----------\n");
+            log("**活力丹用完了！\t\t<----------");
             exit();
         }
         // 循环检测培养是否成功
@@ -164,14 +164,14 @@ function jiasu(m){
             press(755,1110,10);sleep(3000);
         }
     }
-    log("批量快捷培养完成！\n");
+    log("批量快捷培养完成！");
 
     // 循环封爵
     for(i=0;i<m;i++){
         press(895,445,10);sleep(1000);
         press(895,445,10);sleep(1000);
     }
-    log("批量封爵完成！\n");
+    log("批量封爵完成！");
 }
 
 function peiyang(N){
@@ -185,13 +185,13 @@ function peiyang(N){
         name(N-5);sleep(500);
         jiasu(N-5);sleep(500);
     }
-    log("批量培养(取名、加速、培养、封爵)完成！\n");
+    log("批量培养(取名/培养/封爵)完成！");
 }
 
 function main(){
     var date = new Date();
     var time = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
-    log("***** "+time+" *****\n\n");
+    log("****** "+time+" ******\n");
     // 从后宫进入三宫六院再进入谈心界面
     swipe(200,1050,800,1050,300);sleep(200);
     press(730,830,10);sleep(500);
@@ -200,10 +200,10 @@ function main(){
         peiyang(N);
         var k = j+1;
         sleep(500);
-        press(690,1020,20);sleep(1000);  // 直接返回谈心界面
-        log("#### 第 "+k+" 轮循环完成 ####\n\n");
+        press(690,1020,20);sleep(1200);  // 直接返回谈心界面
+        log("###### 第 "+k+" 轮循环完成 ######\n");
     }
-    log("批量生娃完成，累计生娃："+ M*N +"\n\n");
+    log("批量生娃完成，累计生娃："+ M*N +"\n");
     for(p=0;p<30;p++){
         device.vibrate(1000);sleep(500);
         device.cancelVibration();sleep(200);
