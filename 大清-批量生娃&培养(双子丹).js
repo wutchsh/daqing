@@ -8,8 +8,9 @@
   
 auto();
 images.requestScreenCapture();sleep(200);
-var N = 4;      // 定义上书房空位或者生几个娃进行一次培养
-var M = 100;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
+device.setBrightness(0);
+var N = 2;      // 定义上书房空位或者生几个娃进行一次培养
+var M = 20;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
 
 
 function tanxin(){
@@ -77,6 +78,7 @@ function tanxin(){
                     press(1030,55,20);sleep(300);
                 }else{
                     log("未检测到双子丹界面，停止运行");
+                    device.setBrightness(5);
                     for(p=0;p<30;p++){
                         device.vibrate(1000);sleep(500);
                         device.cancelVibration();sleep(200);
@@ -200,10 +202,14 @@ function main(){
         peiyang(N);
         var k = j+1;
         sleep(500);
-        press(690,1020,20);sleep(1200);  // 直接返回谈心界面
+        while(images.detectsColor(captureScreen(), "#fff7f0dc", 540,900)){
+            press(690,1020,20);sleep(1200);  // 直接返回谈心界面
+        }
         log("###### 第 "+k+" 轮循环完成 ######\n");
     }
     log("批量生娃完成，累计生娃："+ M*N +"\n");
+    device.setBrightness(5);
+    Power();
     for(p=0;p<30;p++){
         device.vibrate(1000);sleep(500);
         device.cancelVibration();sleep(200);
