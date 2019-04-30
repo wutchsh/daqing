@@ -80,27 +80,36 @@ function account(){
 //临时领取福利邮件
 function mail(){
     if(images.detectsColor(captureScreen(), "#ffea4837", 1045,1485)){
-        log("检测到未读邮件！");
+        log("账号:"+ accid +",检测到未读邮件！<--------");
         press(1000,1530,10);sleep(400);
         var mailimg = images.read(dir+"/mail.png");
         var mailpoint = imgdect(mailimg, 50, 330, 250, 200);
-        if(mailpoint){
-            log("已定位未读邮件！");
+        while(mailpoint){
+            log("\t已定位未读邮件！");
             press(mailpoint.x+80,mailpoint.y+80,10);sleep(200);
-            var lingquimg = images.read(dir+"/lingqu.png");
-            var lingqupoint = imgdect(lingquimg, 400, 600, 280, 1100);
-            if(lingqupoint){
-                press(lingqupoint.x+110,lingqupoint.y+35,10);sleep(100);
-                press(lingqupoint.x+110,lingqupoint.y+35,10);sleep(300);
-                press(lingqupoint.x+110,lingqupoint.y+35,10);sleep(200);
-                log("领取邮件成功");sleep(100);
+            var mailimg1 = images.read(dir+"/mailimg1.png");    //"领取"模板
+            var mailimg2 = images.read(dir+"/mailimg2.png");    //"朕知道了"模板
+            var mailpoint1 = imgdect(mailimg1, 400, 600, 280, 1100);
+            var mailpoint2 = imgdect(mailimg2, 400, 600, 280, 1100);
+            if(mailpoint1){
+                press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(100);
+                press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(300);
+                press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(200);
+                log("\t领取邮件成功");sleep(100);
+            }else if(mailpoint2){
+                press(mailpoint2.x+110,mailpoint2.y+35,10);sleep(20);
+                press(mailpoint2.x+110,mailpoint2.y+35,10);sleep(300);
+                log("\t没有可领取资源");sleep(100);
             }
+            press(420,220,10);sleep(400);
+            press(180,220,10);sleep(500);
+            mailpoint = imgdect(mailimg, 50, 330, 250, 200);
         }
-    }else{
-        log("未检测到未读邮件！");sleep(200);
+    }
+    else{
+        log("账号:"+ accid +",没有未读邮件！");sleep(200);
     }
 }
-
 
 // 每日资源（元宝红包、升爵套装、升星碎片）
 function daily(){
@@ -316,6 +325,7 @@ function base(){
     saveimg();
     press(1010,90,10);sleep(1000);
 
+    // 过新增剧情
     // shangyijian();
     // press(1010,90,10);sleep(1000);
 
