@@ -10,7 +10,7 @@ auto();
 images.requestScreenCapture();sleep(200);
 device.setBrightness(0);
 var N = 4;      // 定义上书房空位或者生几个娃进行一次培养
-var M = 4;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
+var M = 10;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
 
 
 function shengwa(){
@@ -172,7 +172,7 @@ function main(){
         peiyang(N);
         var k = j+1;
         sleep(600);
-        while(images.detectsColor(captureScreen(), "#fff7f0dc", 540,900)){
+        while(images.detectsColor(captureScreen(), "#ff2b2726", 540,1150)){
             press(690,1020,20);sleep(1200);  // 直接返回谈心界面
         }
         log("###### 第 "+k+" 轮循环完成 ######\n");

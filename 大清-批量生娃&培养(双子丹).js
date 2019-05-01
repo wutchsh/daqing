@@ -201,8 +201,8 @@ function main(){
         tanxin();
         peiyang(N);
         var k = j+1;
-        sleep(500);
-        while(images.detectsColor(captureScreen(), "#fff7f0dc", 540,900)){
+        sleep(600);
+        while(images.detectsColor(captureScreen(), "#ff2b2726", 540,1150)){
             press(690,1020,20);sleep(1200);  // 直接返回谈心界面
         }
         log("###### 第 "+k+" 轮循环完成 ######\n");
@@ -217,5 +217,3 @@ function main(){
 }
 
 main();
-
-
