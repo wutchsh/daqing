@@ -26,6 +26,18 @@ function _TiQin(){
     }
 }
 
+function _LianYin(){
+    // 批量循环联姻
+    while(true){
+        press(880,525,10);sleep(500);
+        press(340,780,10);sleep(200);
+        press(340,1250,10);sleep(100);
+        for(i=0;i<5;i++){
+            press(540,800,10);sleep(100);
+        }
+    }
+}
+
 function _LiBao(){
     // 批量买礼包-confirm
     var n = 60;
@@ -46,6 +58,7 @@ function _LiBao(){
 }
 
 function _Qinmi(){
+    // 使用衣服加亲密
     var p1 = [875,1190];
     var p2 = [380,1190];
     function tappoint(p,n){
@@ -71,6 +84,7 @@ function _Qinmi(){
 }
 
 function _imgdect(temp,x,y,w,h){
+    // 图片指定区域检测特定模板
     img0 = captureScreen();sleep(500);
     var point = images.findImage(img0, temp, {
         region: [x, y, w, h],
@@ -80,6 +94,7 @@ function _imgdect(temp,x,y,w,h){
 }
 
 function _inputacc(){
+    // 账号输入
     if(n < 10){
         accid = acc + "0"+ n;
     }
@@ -93,6 +108,7 @@ function _inputacc(){
 }
 
 function _account(){
+    // 账号切换
     sleep(500);
     press(990,1710,10);sleep(500); // 开始切换账号
     press(540,1040,10);sleep(500);  //按钮“切换账号”
@@ -104,8 +120,8 @@ function _account(){
     }
 }
 
-// _tuitu();
 function _tuitu(){
+    // 快速推图
     while(true){
         press(880,1670,10);sleep(10);
         press(750,1120,10);sleep(10);
@@ -115,6 +131,7 @@ function _tuitu(){
 }
 
 function _huachuan(){
+    //龙舟(端午)小活动自动划船
     function main() {
         press(785,1580,10);sleep(300);
         press(755,1115,10);sleep(300);
@@ -142,7 +159,7 @@ function _huachuan(){
 }
 
 function _QiangHua(){
-    //淸帝强化配点
+    // 淸帝强化配点
     var point = [830,970];      //待强化淸帝坐标
     for(i=0;i<5;i++){
         press(point[0],point[1],10);sleep(20);
@@ -168,6 +185,7 @@ function _QiangHua(){
 }
 
 function _ShengJi(){
+    // 升级大臣
     var x = device.width*797/1080;
     var y = device.height*640/1920;
     var n = 20;
@@ -193,14 +211,57 @@ function _JiangShiwang(){
     }
 }
 
-function _LianYin(){
-    // 批量循环联姻
-    while(true){
-        press(880,525,10);sleep(500);
-        press(340,780,10);sleep(200);
-        press(340,1250,10);sleep(100);
-        for(i=0;i<5;i++){
-            press(540,800,10);sleep(100);
+function _JiNeng(){
+    // 技能升星
+    var N = 10;     // 升级星数
+    point = [180,1130];
+    for(i=0;i<4;i++){
+        press(point[0]+235*i,point[1],20);sleep(50);
+        press(point[0]+235*i,point[1],20);sleep(300);
+        for(k=0;k<N;k++){
+            press(340,1415,10);sleep(100);
+            swipe(300,1125,900,1125,100);sleep(100);
+            press(740,1260,10);sleep(200);
+            press(540,1415,10);sleep(200);
         }
+        press(1000,470,10);sleep(500);
+    }
+}
+
+function _chengzhang(){
+    // 成长点加点
+    threads.start(function(){
+        while(true){
+            press(340,1130,10);sleep(50);
+        }
+    });
+    threads.start(function(){
+        while(true){
+            press(340,1360,10);sleep(50);
+        }
+    });
+    threads.start(function(){
+        while(true){
+            press(800,1130,10);sleep(50);
+        }
+    });
+    threads.start(function(){
+        while(true){
+            press(800,1360,10);sleep(50);
+        }
+    });
+}
+
+function _FeiWei(){
+    // 使用元宝恢复习礼次数快速升妃位
+    for(i=0;i<10;i++){
+        while(images.detectsColor(captureScreen(), "#ffcf4727", 790,1505)){
+            for(k=0;k<10;k++){
+                press(790,1500,10);sleep(20);
+            }
+        }
+        press(540,1390,10);sleep(200);
+        press(800,1030,10);sleep(200);
+        press(755,1145,10);sleep(400);
     }
 }
