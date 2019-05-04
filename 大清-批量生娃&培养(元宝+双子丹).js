@@ -10,7 +10,7 @@ auto();
 images.requestScreenCapture();sleep(200);
 device.setBrightness(0);
 var N = 4;      // 定义上书房空位或者生几个娃进行一次培养
-var M = 10;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
+var M = 25;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
 
 
 function shengwa(){
@@ -34,13 +34,11 @@ function shengwa(){
             exit();
         }
         press(790,805,10);sleep(100);
-        log("Test-A");
         press(755,1130,10);sleep(100);
         press(720,1000,10);sleep(100);
         press(720,1000,10);sleep(100);
         press(720,1000,10);sleep(2800);
         var stat = images.detectsColor(captureScreen(), "#fff1e7cb", 730,1180);
-        log("Test-B");
         if(stat){
             n += 2;
             log("当前皇子数量："+n);
@@ -54,7 +52,6 @@ function shengwa(){
                 press(720,1000,10);sleep(100);
                 press(720,1000,10);sleep(100);
                 press(720,1000,10);sleep(300); //缩短皇子界面关闭后转入双子丹界面的停顿时间
-                log("Test-C");
             }
         }
     }
