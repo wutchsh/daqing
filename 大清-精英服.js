@@ -11,7 +11,7 @@ var n = 0;
 var acc = "";
 var accid = "";
 var Array = [];
-var mode = 1;
+var mode = 0;
 var logurl = "";
 var template = images.read(dir+"/temp.png");
 var template1 = images.read(dir+"/daily.png");
@@ -20,7 +20,8 @@ var template3 = images.read(dir+"/leichong.png");
 var template4 = images.read(dir+"/richong.png");
 var template5 = images.read(dir+"/hongbao.png");
 var template6 = images.read(dir+"/libao.png");
-var template7 = images.read(dir+"/paihangbang.png");
+var template7 = images.read(dir+"/rank.png");
+var template8 = images.read(dir+"/newversion.png");
 
 if(mode == 0){
     acc = "csjyf";
@@ -80,14 +81,23 @@ function account(){
 }
 
 function libao(){
-    press(100,300,10);sleep(500);
-    swipe(850,1720,220,1720,200);sleep(500);
+    press(100,300,10);sleep(600);
+    swipe(900,1750,150,1750,300);sleep(500);
     var point6 = imgdect(template6,640,1700,420,200);sleep(20);
+    var point8 = imgdect(template8,640,1700,420,200);sleep(20);
     if(point6){
         press(point6.x+70,point6.y+70,10);sleep(500);
         press(540,1340,10);sleep(20)
+        press(540,1340,10);sleep(20)
         press(540,1340,10);sleep(200)
-        press(540,1340,10);sleep(500)
+        press(540,1340,10);sleep(1000)
+    }
+    if(point8){
+        press(point8.x+80,point8.y+80,10);sleep(500);
+        press(540,1490,10);sleep(20);
+        press(540,1490,10);sleep(100);
+        press(540,1490,10);sleep(200);
+        press(540,1490,10);sleep(500);
     }
     press(1010,90,10);sleep(1000);  // 返回金銮殿
 }
@@ -97,7 +107,7 @@ function mobai(){
     if(point7){
         press(point7.x+70,point7.y+70,10);sleep(800);
         for(i=0;i<3;i++){
-            for(j=0;j<35;j++){
+            for(j=0;j<40;j++){
                 press(895,1730,10);sleep(10);
                 press(540,1170,10);sleep(10);
             }
@@ -282,7 +292,7 @@ function vip(){
     // 领取累充奖励
     if(point3){
         press(point3.x+70,point3.y+70,10);sleep(200);
-        for(i=1;i<=60;i++){     //  默认60
+        for(i=1;i<=70;i++){     //  默认60
             press(920,770,10);sleep(10);press(920,770,10);sleep(20);
             press(920,1170,10);sleep(10);press(920,1170,10);sleep(20);
             press(920,1590,10);sleep(10);press(920,1590,10);sleep(20);
