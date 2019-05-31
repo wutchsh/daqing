@@ -11,7 +11,7 @@ var n = 0;
 var acc = "";
 var accid = "";
 var Array = [];
-var mode = 0;
+var mode = 1;
 var logurl = "";
 var template = images.read(dir+"/temp.png");
 var template1 = images.read(dir+"/daily.png");
@@ -19,18 +19,20 @@ var template2 = images.read(dir+"/weekly.png");
 var template3 = images.read(dir+"/leichong.png");
 var template4 = images.read(dir+"/richong.png");
 var template5 = images.read(dir+"/hongbao.png");
+var template6 = images.read(dir+"/libao.png");
+var template7 = images.read(dir+"/paihangbang.png");
 
 if(mode == 0){
     acc = "csjyf";
-    n0 = 0;
-    N = 100;
-    Array = [35,36,40];
+    n0 = 1;
+    N = 15;
+    // Array = [35,36,40];
 }
 else if(mode == 1){
-    acc = "TaIzu";
-    n0 = 1;
-    N = 50;
-    Array = [16,17,18,19,20,21,22];
+    acc = "dyw0";
+    n0 = 0;
+    N = 10;
+    // Array = [];
 }
 
 function imgdect(temp,x,y,w,h){ 
@@ -75,6 +77,34 @@ function account(){
         n += 1;
         inputacc();
     }
+}
+
+function libao(){
+    press(100,300,10);sleep(500);
+    swipe(850,1720,220,1720,200);sleep(500);
+    var point6 = imgdect(template6,640,1700,420,200);sleep(20);
+    if(point6){
+        press(point6.x+70,point6.y+70,10);sleep(500);
+        press(540,1340,10);sleep(20)
+        press(540,1340,10);sleep(200)
+        press(540,1340,10);sleep(500)
+    }
+    press(1010,90,10);sleep(1000);  // 返回金銮殿
+}
+
+function mobai(){
+    var point7 = imgdect(template7,10,200,180,700);sleep(20);
+    if(point7){
+        press(point7.x+70,point7.y+70,10);sleep(800);
+        for(i=0;i<3;i++){
+            for(j=0;j<35;j++){
+                press(895,1730,10);sleep(10);
+                press(540,1170,10);sleep(10);
+            }
+            swipe(900,1200,600,1200,200);sleep(300);
+        }
+    }
+    press(1010,90,10);sleep(1000);  // 返回金銮殿
 }
 
 //临时领取福利邮件
@@ -309,6 +339,8 @@ function base(){
     press(540,980,10);sleep(100);
     press(540,980,10);sleep(100);
     press(540,980,10);sleep(2000);
+    libao();sleep(200);
+    mobai();sleep(200);
     press(1010,90,10);sleep(1000);  // 回宫，回到主界面
 
     // 领取每日资源、每周资源
