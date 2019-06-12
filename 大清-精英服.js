@@ -22,6 +22,7 @@ var template5 = images.read(dir+"/hongbao.png");
 var template6 = images.read(dir+"/libao.png");
 var template7 = images.read(dir+"/rank.png");
 var template8 = images.read(dir+"/newversion.png");
+var template9 = images.read(dir+"/lingqu.png");
 
 if(mode == 0){
     acc = "csjyf";
@@ -31,8 +32,8 @@ if(mode == 0){
 }
 else if(mode == 1){
     acc = "dyw0";
-    n0 = 0;
-    N = 10;
+    n0 = 49;
+    N = 50;
     // Array = [];
 }
 
@@ -80,8 +81,28 @@ function account(){
     }
 }
 
+
+function yueka(){
+    press(770,1800,10);sleep(300);
+    var point9 = imgdect(template9,550,1280,400,140);sleep(50);
+    if(point9){
+        press(point9.x+180,point9.y+50,10);sleep(10);
+        press(point9.x+180,point9.y+50,10);sleep(10);
+        press(point9.x+180,point9.y+50,10);sleep(300);
+        log("账号:"+ accid +",已领取至尊月卡！");sleep(100);
+    }
+    else if(images.detectsColor(captureScreen(), "#ffe1bfea", 770,1355)){
+        log("账号:"+ accid +",已领取至尊月卡！");sleep(100);
+    }
+    else{
+        log("账号:"+ accid +",未激活至尊月卡！<--------");sleep(100);
+    }
+}
+
+
 function libao(){
     press(100,300,10);sleep(600);
+    yueka();sleep(800);             // 至尊月卡领取
     swipe(900,1750,150,1750,300);sleep(500);
     var point6 = imgdect(template6,640,1700,420,200);sleep(20);
     var point8 = imgdect(template8,640,1700,420,200);sleep(20);
@@ -108,8 +129,8 @@ function mobai(){
         press(point7.x+70,point7.y+70,10);sleep(800);
         for(i=0;i<3;i++){
             for(j=0;j<40;j++){
-                press(895,1730,10);sleep(10);
-                press(540,1170,10);sleep(10);
+                press(895,1730,10);sleep(15);
+                press(540,1170,10);sleep(15);
             }
             swipe(900,1200,600,1200,200);sleep(300);
         }
@@ -292,7 +313,7 @@ function vip(){
     // 领取累充奖励
     if(point3){
         press(point3.x+70,point3.y+70,10);sleep(200);
-        for(i=1;i<=70;i++){     //  默认60
+        for(i=1;i<=70;i++){     //  默认70
             press(920,770,10);sleep(10);press(920,770,10);sleep(20);
             press(920,1170,10);sleep(10);press(920,1170,10);sleep(20);
             press(920,1590,10);sleep(10);press(920,1590,10);sleep(20);
@@ -342,7 +363,8 @@ function base(){
     account();sleep(1000);
     press(540,1600,10);sleep(500); // 登基&上朝，进入金銮殿界面
     press(540,1110,10);sleep(200);  //可能出现的领取充值礼包界面及VIP等级提升界面
-    press(540,1110,10);sleep(200);
+    press(540,1110,10);sleep(20);
+    press(540,1110,10);sleep(20);
     press(540,1110,10);sleep(4500); //默认5000
     press(540,980,10);sleep(100);
     press(540,980,10);sleep(100);
@@ -367,7 +389,7 @@ function base(){
     saveimg();
     press(1010,90,10);sleep(1000);
 
-    // 过新增剧情
+    // // 过新增剧情
     // shangyijian();
     // press(1010,90,10);sleep(1000);
 
@@ -394,8 +416,8 @@ function main(){
     // 运行结束关闭屏幕并循环震动通知
     Power();                    //Root权限
     device.setBrightness(5);
-    for(k=0;k<30;k++){
-        device.vibrate(1000);sleep(500);
+    for(k=0;k<20;k++){
+        device.vibrate(600);sleep(400);
         device.cancelVibration();sleep(200);
     }
 }
