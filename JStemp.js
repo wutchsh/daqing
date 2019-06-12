@@ -83,7 +83,7 @@ function imgdect(temp,x,y,w,h){
 // }
 
 
-// // 挑战总督-俞大猷 543,1472
+// // 挑战总督-俞大猷
 // var stat = images.detectsColor(captureScreen(), "#ff747474", 543,1472)
 // while(stat){
 //     press(1030,55,10);sleep(150);
