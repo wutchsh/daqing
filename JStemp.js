@@ -18,10 +18,10 @@ function imgdect(temp,x,y,w,h){
     return point;
 }
 
-// 定点色彩识别
+// // 定点色彩识别
 // stat = images.detectsColor(captureScreen(), "#ffe5e2ce", 540,1135)
 // var img = captureScreen();sleep(500);
-// var point = [790,1505];
+// var point = [770,1355];
 // var c = images.pixel(img,point[0],point[1]);
 // var msg = "";
 // msg += colors.toString(c);
@@ -39,10 +39,10 @@ function imgdect(temp,x,y,w,h){
 // // 僵尸王
 // while(images.detectsColor(captureScreen(), "#ff5d5d5d", 764,1480)){
 //     press(1020,60,10);sleep(100);
-//     press(880,945,10);sleep(200);
+//     press(880,1295,10);sleep(200);
 // }
 // press(764,1480,10);sleep(50);
-// press(764,1480,10);sleep(100);
+// press(764,1480,10);sleep(1500);  //控制延迟时间
 // while(true){
 //     press(800,1440,10);sleep(10);
 // }
@@ -74,6 +74,26 @@ function imgdect(temp,x,y,w,h){
 // while(true){
 //     // press(540,930,10);sleep(10);
 //     press(870,1056,10);sleep(50);
+// }
+
+// // 刷新倭寇BOSS血量
+// while(true){
+//     press(1010,60,10);sleep(100);
+//     press(890,470,10);sleep(400);   // 第一个讨伐按钮
+// }
+
+
+// // 挑战总督-俞大猷 543,1472
+// var stat = images.detectsColor(captureScreen(), "#ff747474", 543,1472)
+// while(stat){
+//     press(1030,55,10);sleep(150);
+//     press(870,950,10);sleep(10);
+//     press(870,950,10);sleep(380);
+//     stat = images.detectsColor(captureScreen(), "#ff747474", 543,1472);
+// }
+// for(n=0;n<6;n++){
+//     press(543,1472,10);
+//     press(543,1700,10);
 // }
 
 
@@ -138,6 +158,7 @@ function imgdect(temp,x,y,w,h){
 
 // //亲密加点-confirm
 // var p1 = [875,1190];
+// // var p1 = [875,885];
 // var p2 = [380,1190];
 // function tappoint(p,n){
 //     for(i=0;i<n;i++){
@@ -154,11 +175,11 @@ function imgdect(temp,x,y,w,h){
 //         }
 //     }
 // }
-// tappoint(p1,20000);
+// tappoint(p2,20000);
 
 
 // // 元宝恢复习礼次数快速升妃位
-// for(i=0;i<10;i++){
+// for(i=0;i<8;i++){
 //     while(images.detectsColor(captureScreen(), "#ffcf4727", 790,1505)){
 //         for(k=0;k<10;k++){
 //             press(790,1500,10);sleep(20);
@@ -168,13 +189,18 @@ function imgdect(temp,x,y,w,h){
 //     press(800,1030,10);sleep(200);
 //     press(755,1145,10);sleep(400);
 // }
+// while(images.detectsColor(captureScreen(), "#ffcf4727", 790,1505)){
+//     for(k=0;k<10;k++){
+//         press(790,1500,10);sleep(20);
+//     }
+// }
 
 
 
 // ***************************************  大 臣 相 关  *************************************** //
 
 
-// 升级大臣
+// // 升级大臣
 // var x = device.width*797/1080;
 // var y = device.height*640/1920;
 // var n = 20;
@@ -302,4 +328,19 @@ function imgdect(temp,x,y,w,h){
 //     swipe(300,980,900,980,50);sleep(100);
 //     press(750,1100,10);sleep(100);
 //     press(1030,1110,10);sleep(100);
+// }
+
+
+// // 小活动
+// while(true){
+//     press(760,1469,10);
+// }
+
+// // 固定点点击
+// p1 = [210,1008];
+// p2 = [540,1008];
+// p3 = [870,1008];
+// p = p3;
+// while(true){
+//     press(p[0],p[1],10);
 // }
