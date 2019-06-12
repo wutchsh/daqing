@@ -72,14 +72,16 @@ function xianshi(){
         var point2 = imgdect(template2,530,330,500,1450);sleep(100);
         if(point2){
             press(point2.x+320,point2.y+180,10);sleep(500);
-            var point3 = imgdect(template3,220,200,60,1630);sleep(100);
+            var point3 = imgdect(template3,220,250,60,1400);sleep(100);
             while(point3){
                 press(540,point3.y+100,10);sleep(500);
-                press(540,1850,10);sleep(20);
-                press(540,1850,10);sleep(100);
-                press(540,1850,10);sleep(300);
-                press(1030,50,10);sleep(500);
-                point3 = imgdect(template3,220,200,60,1630);sleep(100);
+                press(540,1850,10);sleep(50);
+                press(540,1850,10);sleep(50);
+                press(540,1850,10);sleep(50);
+                press(540,1850,10);sleep(800);
+                press(1030,50,10);sleep(10);
+                press(1030,50,10);sleep(800);
+                point3 = imgdect(template3,220,250,60,1400);sleep(100);
             }
             log("账号"+accid+"：领取限时奖励完成！");sleep(500)
         }
@@ -98,6 +100,7 @@ function base(){
     press(540,1110,10);sleep(3000); //默认5000
     press(540,980,10);sleep(100);
     press(540,980,10);sleep(200);
+    press(1010,90,10);sleep(800);  // 回宫，回到主界面
 
     xianshi();sleep(500);
 
