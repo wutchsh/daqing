@@ -26,7 +26,7 @@ var template9 = images.read(dir+"/lingqu.png");
 
 if(mode == 0){
     acc = "csjyf";
-    n0 = 1;
+    n0 = 3;
     N = 15;
     // Array = [35,36,40];
 }
@@ -83,12 +83,15 @@ function account(){
 
 
 function yueka(){
-    press(770,1800,10);sleep(300);
+    press(770,1800,10);sleep(600);
     var point9 = imgdect(template9,550,1280,400,140);sleep(50);
     if(point9){
-        press(point9.x+180,point9.y+50,10);sleep(10);
-        press(point9.x+180,point9.y+50,10);sleep(10);
-        press(point9.x+180,point9.y+50,10);sleep(300);
+        press(point9.x+180,point9.y+50,10);sleep(20);
+        press(point9.x+180,point9.y+50,10);sleep(50);
+        press(540,1100,10);sleep(10);
+        press(540,1100,10);sleep(10);
+        press(540,1100,10);sleep(10);
+        press(540,1100,10);sleep(500);
         log("账号:"+ accid +",已领取至尊月卡！");sleep(100);
     }
     else if(images.detectsColor(captureScreen(), "#ffe1bfea", 770,1355)){
@@ -414,12 +417,12 @@ function main(){
         base();
     }
     // 运行结束关闭屏幕并循环震动通知
-    Power();                    //Root权限
     device.setBrightness(5);
     for(k=0;k<20;k++){
         device.vibrate(600);sleep(400);
         device.cancelVibration();sleep(200);
     }
+    Power();                    //Root权限
 }
 
 main();
