@@ -143,11 +143,11 @@ function name(m){
 function jiasu(m){
 
     // 检测是否勾选专人培养
-    if(images.detectsColor(captureScreen(), "#ff227281", 247,1845)){
-        press(247,1845,20);sleep(1500);  //打开专人培养
+    if(images.detectsColor(captureScreen(), "#ff227281", 247,1822)){
+        press(247,1822,20);sleep(1500);  //打开专人培养
         log("打开专人培养!");
     }
-    if(images.detectsColor(captureScreen(), "#ff227281", 247,1845)){
+    if(images.detectsColor(captureScreen(), "#ff227281", 247,1822)){
         log("已打开专人培养失败！");
     }
 
@@ -209,11 +209,11 @@ function main(){
     }
     log("批量生娃完成，累计生娃："+ M*N +"\n");
     device.setBrightness(5);
-    Power();
     for(p=0;p<30;p++){
         device.vibrate(1000);sleep(500);
         device.cancelVibration();sleep(200);
     }
+    Power();
 }
 
 main();
