@@ -71,16 +71,16 @@ function xianshi(){
         press(point1.x+70,point1.y+70,10);sleep(500);
         var point2 = imgdect(template2,530,330,500,1450);sleep(100);
         if(point2){
-            press(point2.x+320,point2.y+180,10);sleep(500);
+            press(point2.x+320,point2.y+180,10);sleep(800);
             var point3 = imgdect(template3,220,250,60,1400);sleep(100);
             while(point3){
-                press(540,point3.y+100,10);sleep(500);
-                press(540,1850,10);sleep(50);
-                press(540,1850,10);sleep(50);
-                press(540,1850,10);sleep(50);
-                press(540,1850,10);sleep(800);
-                press(1030,50,10);sleep(10);
-                press(1030,50,10);sleep(800);
+                press(540,point3.y+100,10);sleep(20);
+                press(540,point3.y+100,10);sleep(200);
+                press(540,1850,10);sleep(10);
+                press(540,1850,10);sleep(200);
+                press(770,1000,10);sleep(10);
+                press(770,1000,10);sleep(200);
+                press(1030,50,10);sleep(1000);
                 point3 = imgdect(template3,220,250,60,1400);sleep(100);
             }
             log("账号"+accid+"：领取限时奖励完成！");sleep(500)
@@ -116,12 +116,12 @@ function main(){
         base();
     }
     // 运行结束关闭屏幕并循环震动通知
-    Power();                    //Root权限
     device.setBrightness(5);
     for(k=0;k<10;k++){
         device.vibrate(600);sleep(400);
         device.cancelVibration();sleep(200);
     }
+    Power();                    //Root权限
 }
 
 main();
