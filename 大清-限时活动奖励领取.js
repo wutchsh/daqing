@@ -74,20 +74,20 @@ function xianshi(){
             press(point2.x+320,point2.y+180,10);sleep(800);
             var point3 = imgdect(template3,220,250,60,1400);sleep(100);
             while(point3){
-                press(540,point3.y+100,10);sleep(20);
+                // press(575,point3.y+100,10);sleep(20);
                 press(540,point3.y+100,10);sleep(200);
                 press(540,1850,10);sleep(10);
                 press(540,1850,10);sleep(200);
                 press(770,1000,10);sleep(10);
                 press(770,1000,10);sleep(200);
-                press(1030,50,10);sleep(1000);
+                press(1030,50,10);sleep(1300);
                 point3 = imgdect(template3,220,250,60,1400);sleep(100);
             }
-            log("账号"+accid+"：领取限时奖励完成！");sleep(500)
+            log("账号"+accid+"：领取限时奖励完成！");sleep(1000)
         }
     }
-    press(1010,50,10);sleep(500);  // 返回金銮殿
-    press(1010,50,10);sleep(500);
+    press(1010,50,10);sleep(800);  // 返回金銮殿
+    press(1010,50,10);sleep(800);
 }
 
 
