@@ -18,19 +18,24 @@ function imgdect(temp,x,y,w,h){
     return point;
 }
 
-// // 定点色彩识别
+// 定点色彩识别
 // stat = images.detectsColor(captureScreen(), "#ffe5e2ce", 540,1135)
-// var img = captureScreen();sleep(500);
-// var point = [770,1355];
-// var c = images.pixel(img,point[0],point[1]);
-// var msg = "";
-// msg += colors.toString(c);
-// toastLog(msg)
+var img = captureScreen();sleep(500);
+var point = [242,592];
+var c = images.pixel(img,point[0],point[1]);
+var msg = "";
+msg += colors.toString(c);
+toastLog(msg)
 // press(point[0],point[1],1000);
 
 
 // device.setBrightness(5);
 
+// log(app.getPackageName("玄元剑仙"));
+// log(app.getAppName("com.szxchd.yqxx.dodsdk"));
+// app.launchApp("玄元剑仙");
+// app.launch("com.szxchd.yqxx.dodsdk");
+// shell("am force-stop com.szxchd.yqxx.dodsdk",true);     // 强制关闭应用
 
 
 // ***************************************  副 本 相 关  *************************************** //
@@ -39,10 +44,10 @@ function imgdect(temp,x,y,w,h){
 // // 僵尸王
 // while(images.detectsColor(captureScreen(), "#ff5d5d5d", 764,1480)){
 //     press(1020,60,10);sleep(100);
-//     press(880,1295,10);sleep(200);
+//     press(880,950,10);sleep(200);
 // }
 // press(764,1480,10);sleep(50);
-// press(764,1480,10);sleep(1500);  //控制延迟时间
+// press(764,1480,10);sleep(100);  //控制延迟时间
 // while(true){
 //     press(800,1440,10);sleep(10);
 // }
@@ -59,27 +64,27 @@ function imgdect(temp,x,y,w,h){
 
 
 // // 打倭寇！
-// press(540,930,10);sleep(100);
+// press(540,930,10);sleep(100);                                   //初始自动点击开战
 // press(540,930,10);sleep(100);
 // press(540,930,10);sleep(100);
 // press(540,930,10);sleep(100);
 // press(540,1200,10);sleep(200);
-// if(images.detectsColor(captureScreen(), "#fff4c8bd", 800,360)){
+// if(images.detectsColor(captureScreen(), "#fff4c8bd", 800,360)){     //自动选臣恢复
 //     press(800,360,10);sleep(500);
 //     press(760,1140,10);sleep(100)
 // }
 // press(800,360,10);sleep(20);
 // press(800,360,10);sleep(100);
 // press(540,930,10);sleep(10);
-// while(true){
-//     // press(540,930,10);sleep(10);
-//     press(870,1056,10);sleep(50);
+// while(true){                                                    //循环点击开战
+//     press(540,930,10);sleep(10);
+//     // press(870,1056,10);sleep(50);
 // }
 
 // // 刷新倭寇BOSS血量
 // while(true){
-//     press(1010,60,10);sleep(100);
-//     press(890,470,10);sleep(400);   // 第一个讨伐按钮
+//     press(1010,60,10);sleep(150);
+//     press(890,470,10);sleep(450);   // 第一个讨伐按钮
 // }
 
 
@@ -121,7 +126,7 @@ function imgdect(temp,x,y,w,h){
 
 
 // // 批量提亲-confirm
-// var id = 770;
+// var id = 120;
 // function tiqin(){
 //     press(540,860,10);sleep(200);
 //     press(740,1120,10);sleep(400);
@@ -187,7 +192,7 @@ function imgdect(temp,x,y,w,h){
 //     }
 //     press(540,1390,10);sleep(200);
 //     press(800,1030,10);sleep(200);
-//     press(755,1145,10);sleep(400);
+//     press(755,1145,10);sleep(400);0
 // }
 // while(images.detectsColor(captureScreen(), "#ffcf4727", 790,1505)){
 //     for(k=0;k<10;k++){
@@ -245,16 +250,16 @@ function imgdect(temp,x,y,w,h){
 
 
 // // 升级技能
-// var N = 10;     // 升级星数
+// var N = 7;     // 升级星数
 // point = [180,1130];
 // for(i=0;i<4;i++){
 //     press(point[0]+235*i,point[1],10);sleep(20);
 //     press(point[0]+235*i,point[1],10);sleep(500);
 //     for(k=0;k<N;k++){
 //         press(340,1415,10);sleep(200);
-//         swipe(300,1125,900,1125,200);sleep(200);
-//         press(740,1260,10);sleep(200);
-//         press(540,1415,10);sleep(200);
+//         swipe(300,1125,900,1125,50);sleep(300);
+//         press(740,1260,10);sleep(300);
+//         press(540,1415,10);sleep(400);
 //     }
 //     press(1000,470,10);sleep(800);
 // }
@@ -313,9 +318,9 @@ function imgdect(temp,x,y,w,h){
 // }
 
 
-// 批量买礼包-confirm
-// var n = 45;
-// press(910,730,10);sleep(100);
+// // 批量买礼包-confirm
+// var n = 62;
+// press(910,1576,10);sleep(100);
 // swipe(300,980,900,980,50);sleep(100);
 // press(750,1100,10);sleep(100);
 // // 购买界面检测
@@ -324,7 +329,7 @@ function imgdect(temp,x,y,w,h){
 //     press(755,1080,10);sleep(200);
 // }
 // for(i=0;i<n;i++){
-//     press(910,730,10);sleep(100);
+//     press(910,1576,10);sleep(100);
 //     swipe(300,980,900,980,50);sleep(100);
 //     press(750,1100,10);sleep(100);
 //     press(1030,1110,10);sleep(100);
@@ -340,7 +345,7 @@ function imgdect(temp,x,y,w,h){
 // p1 = [210,1008];
 // p2 = [540,1008];
 // p3 = [870,1008];
-// p = p3;
+// p = p1;
 // while(true){
 //     press(p[0],p[1],10);
 // }
