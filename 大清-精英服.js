@@ -1,6 +1,6 @@
 /*  
     作者:wuhtchsh@gmail.com
-    游戏版本：我在大清当皇帝(v5.4)
+    游戏版本：我在大清当皇帝(v5.6.1)
     请勿用作商业用途，禁止用此脚本及衍生脚本盈利。
 */
 
@@ -25,15 +25,15 @@ var template8 = images.read(dir+"/newversion.png");
 var template9 = images.read(dir+"/lingqu.png");
 
 if(mode == 0){
-    acc = "csjyf";
-    n0 = 3;
-    N = 15;
+    acc = "";
+    n0 = 1;
+    N = 10;
     // Array = [35,36,40];
 }
 else if(mode == 1){
-    acc = "dyw0";
-    n0 = 49;
-    N = 50;
+    acc = "";
+    n0 = 1;
+    N = 10;
     // Array = [];
 }
 
@@ -156,9 +156,9 @@ function mail(){
             var mailpoint1 = imgdect(mailimg1, 400, 600, 280, 1100);
             var mailpoint2 = imgdect(mailimg2, 400, 600, 280, 1100);
             if(mailpoint1){
-                press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(100);
                 press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(300);
                 press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(200);
+                press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(300);
                 log("\t领取邮件成功");sleep(100);
             }else if(mailpoint2){
                 press(mailpoint2.x+110,mailpoint2.y+35,10);sleep(20);
@@ -198,8 +198,8 @@ function daily(){
             press(point1.x+80,point1.y+290,10);sleep(600);
         }
         swipe(700,1600,700,900,400);sleep(200);
-        press(870,820,10);sleep(200);
-        press(870,820,10);sleep(300);
+        press(540,1290,10);sleep(300);  // 淸帝碎片
+        press(540,1290,10);sleep(300);
         if(images.detectsColor(captureScreen(), "#ffe5e2ce", 540,1135)){
             log("检测到购买每日资源卡住！");
             press(950,520,10);sleep(200);
@@ -207,14 +207,14 @@ function daily(){
             press(870,820,10);sleep(200);
             press(870,820,10);sleep(300);
         }
-        press(210,1290,10);sleep(300);  // 淸帝碎片
-        press(210,1290,10);sleep(300);
-        press(540,1290,10);sleep(200);
-        press(540,1290,10);sleep(300);
         press(870,1290,10);sleep(200);
         press(870,1290,10);sleep(300);
         press(210,1760,10);sleep(200);
-        press(210,1760,10);sleep(400);
+        press(210,1760,10);sleep(300);
+        press(540,1760,10);sleep(200);
+        press(540,1760,10);sleep(300);
+        press(870,1760,10);sleep(200);
+        press(870,1760,10);sleep(300);
 
         files.append(logurl, "账号:"+ accid + ",每日资源-OK！\n", encoding = 'utf-8');sleep(1000);
     }
@@ -364,10 +364,10 @@ function shangyijian(){
 function base(){
     // 切换账号并进入珍宝阁道具界面
     account();sleep(1000);
-    press(540,1600,10);sleep(500); // 登基&上朝，进入金銮殿界面
+    press(540,1600,10);sleep(600); // 登基&上朝，进入金銮殿界面
     press(540,1110,10);sleep(200);  //可能出现的领取充值礼包界面及VIP等级提升界面
-    press(540,1110,10);sleep(20);
-    press(540,1110,10);sleep(20);
+    press(540,1110,10);sleep(50);
+    press(540,1110,10);sleep(50);
     press(540,1110,10);sleep(4500); //默认5000
     press(540,980,10);sleep(100);
     press(540,980,10);sleep(100);
