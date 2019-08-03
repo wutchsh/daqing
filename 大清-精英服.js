@@ -224,8 +224,8 @@ function daily(){
 }
 
 function weekly(){
-    swipe(700,1800,700,600,400);sleep(200);
-    var point2 = imgdect(template2, 120, 630, 840, 950)
+    swipe(700,1800,700,150,500);sleep(200);
+    var point2 = imgdect(template2, 120, 630, 840, 950);
     if(point2){
         sleep(300);
         press(point2.x+80,point2.y+290,10);sleep(200);
@@ -316,7 +316,7 @@ function vip(){
     // 领取累充奖励
     if(point3){
         press(point3.x+70,point3.y+70,10);sleep(200);
-        for(i=1;i<=70;i++){     //  默认70
+        for(i=1;i<=90;i++){     //  默认90
             press(920,770,10);sleep(10);press(920,770,10);sleep(20);
             press(920,1170,10);sleep(10);press(920,1170,10);sleep(20);
             press(920,1590,10);sleep(10);press(920,1590,10);sleep(20);
@@ -334,7 +334,7 @@ function vip(){
             press(920,1345,10);sleep(10);press(920,1345,10);sleep(10);
             press(920,1325,10);sleep(10);press(920,1345,10);sleep(15);
         }
-        files.append(logurl, "账号:"+ accid + ",领取日充成功！\n\n", encoding = 'utf-8');sleep(200);
+        files.append(logurl, "账号:"+ accid + ",领取日充成功！\n", encoding = 'utf-8');sleep(200);
     }
     else{
         files.append(logurl, "账号:"+ accid + ",检测日充失败！    \t<----------\n\n", encoding = 'utf-8');sleep(200);
