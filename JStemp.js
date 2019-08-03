@@ -20,12 +20,12 @@ function imgdect(temp,x,y,w,h){
 
 // 定点色彩识别
 // stat = images.detectsColor(captureScreen(), "#ffe5e2ce", 540,1135)
-var img = captureScreen();sleep(500);
-var point = [242,592];
-var c = images.pixel(img,point[0],point[1]);
-var msg = "";
-msg += colors.toString(c);
-toastLog(msg)
+// var img = captureScreen();sleep(500);
+// var point = [1045,1085];
+// var c = images.pixel(img,point[0],point[1]);
+// var msg = "";
+// msg += colors.toString(c);
+// toastLog(msg)
 // press(point[0],point[1],1000);
 
 
@@ -36,6 +36,25 @@ toastLog(msg)
 // app.launchApp("玄元剑仙");
 // app.launch("com.szxchd.yqxx.dodsdk");
 // shell("am force-stop com.szxchd.yqxx.dodsdk",true);     // 强制关闭应用
+// shell("am force-stop com.szxchd.yqxx.dodsdk",true); sleep(1000);
+// app.launch("com.szxchd.yqxx.dodsdk");sleep(10000);
+
+
+
+// ################ 代码测试 及时删除 ################## //
+
+// if(images.detectsColor(captureScreen(), "#ff5095a2", 650,1300)){
+//     sleep(1000);
+//     press(1020,50,10);sleep(500);
+// }
+
+
+
+
+
+
+
+
 
 
 // ***************************************  副 本 相 关  *************************************** //
