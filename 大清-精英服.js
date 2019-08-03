@@ -37,6 +37,50 @@ else if(mode == 1){
     // Array = [];
 }
 
+function base(){
+    // 切换账号并进入珍宝阁道具界面
+    account();sleep(1000);
+    press(540,1600,10);sleep(600); // 登基&上朝，进入金銮殿界面
+    press(540,1110,10);sleep(200);  //可能出现的领取充值礼包界面及VIP等级提升界面
+    press(540,1110,10);sleep(50);
+    press(540,1110,10);sleep(50);
+    press(540,1110,10);sleep(4500); //默认5000
+    press(540,980,10);sleep(100);
+    press(540,980,10);sleep(100);
+    press(540,980,10);sleep(100);
+    press(540,980,10);sleep(100);
+    press(540,980,10);sleep(2000);
+    libao();sleep(200);
+    mobai();sleep(200);
+    press(1010,90,10);sleep(1000);  // 回宫，回到主界面
+
+    // 领取每日资源、每周资源
+    daily();
+    weekly();
+    press(1010,90,10);sleep(2000);
+    
+    // // 领取VIP充值礼包，需要时打开该功能
+    // vip();
+    // press(1010,90,10);sleep(1000);
+
+    // 使用元宝红包
+    yuanbao();
+    saveimg();
+    press(1010,90,10);sleep(1000);
+
+    // // 过新增剧情
+    // shangyijian();
+    // press(1010,90,10);sleep(1000);
+
+    // // 领取邮件福利
+    // mail();
+    // press(1010,90,10);sleep(1000);
+
+    press(90,100,10);sleep(1000);   // 点击头像
+    press(880,1850,10);sleep(1000); // 选择区服
+    log("账号"+accid+"--OK");
+}
+
 function imgdect(temp,x,y,w,h){ 
     img0 = captureScreen();sleep(500);
     var point = images.findImage(img0, temp, {
@@ -358,51 +402,6 @@ function shangyijian(){
         press(630,780,10); sleep(50);
         press(630,780,10); sleep(100);
     }    
-}
-
-
-function base(){
-    // 切换账号并进入珍宝阁道具界面
-    account();sleep(1000);
-    press(540,1600,10);sleep(600); // 登基&上朝，进入金銮殿界面
-    press(540,1110,10);sleep(200);  //可能出现的领取充值礼包界面及VIP等级提升界面
-    press(540,1110,10);sleep(50);
-    press(540,1110,10);sleep(50);
-    press(540,1110,10);sleep(4500); //默认5000
-    press(540,980,10);sleep(100);
-    press(540,980,10);sleep(100);
-    press(540,980,10);sleep(100);
-    press(540,980,10);sleep(100);
-    press(540,980,10);sleep(2000);
-    libao();sleep(200);
-    mobai();sleep(200);
-    press(1010,90,10);sleep(1000);  // 回宫，回到主界面
-
-    // 领取每日资源、每周资源
-    daily();
-    weekly();
-    press(1010,90,10);sleep(2000);
-    
-    // // 领取VIP充值礼包，需要时打开该功能
-    // vip();
-    // press(1010,90,10);sleep(1000);
-
-    // 使用元宝红包
-    yuanbao();
-    saveimg();
-    press(1010,90,10);sleep(1000);
-
-    // // 过新增剧情
-    // shangyijian();
-    // press(1010,90,10);sleep(1000);
-
-    // // 领取邮件福利
-    // mail();
-    // press(1010,90,10);sleep(1000);
-
-    press(90,100,10);sleep(1000);   // 点击头像
-    press(880,1850,10);sleep(1000); // 选择区服
-    log("账号"+accid+"--OK");
 }
 
 function main(){
