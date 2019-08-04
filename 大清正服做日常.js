@@ -14,18 +14,18 @@ var template3 = images.read(dir+"/reddot.png");
 var mailimg = images.read(dir+"/mail.png");
 var mailimg1 = images.read(dir+"/mailimg1.png");    //"领取"模板
 var mailimg2 = images.read(dir+"/mailimg2.png");    //"朕知道了"模板
+var jsfuben = images.read(dir+"/jsfuben.png");  // 僵尸副本入口
 
 
 main();
 function main(){
-
     mobai();
     huangzi();
     taizi();
     junjichu();
     hougong();
     guojiarenwu();
-    // jiangshi();
+    jiangshi();
     canglong();
     xianshi();
     mail();
@@ -54,19 +54,21 @@ function mobai(){
     }
     press(1010,90,10);sleep(1000);  // 返回金銮殿
     press(1010,90,10);sleep(1000);  // 返回主界面
-    log("膜拜完成！");
+    log("膜拜完成！");sleep(500);
 }
 
 function huangzi(){
     swipe(100,300,1000,300,300);sleep(100);
     swipe(100,300,1000,300,300);sleep(300);
-    press(500,480,10);sleep(200);
-    press(690,1825,10);sleep(200);
-    press(540,1000,10);sleep(200);
-    press(690,1825,10);sleep(200);
+    press(500,480,10);sleep(1500);
+    press(690,1825,10);sleep(1500);
+    press(540,1000,10);sleep(100);
+    press(540,1000,10);sleep(500);
+    press(690,1825,10);sleep(1500);
+    press(540,1000,10);sleep(100);
     press(540,1000,10);sleep(2000);
     press(1020,50,10);sleep(1000);   // 回宫
-    log("上书房皇子培养完成！");
+    log("上书房皇子培养完成！");sleep(500);
 }
 
 function taizi(){
@@ -101,15 +103,19 @@ function taizi(){
         stat = images.detectsColor(captureScreen(), "#ff2e2c2c", 900,380);
     }
     press(1020,50,10);sleep(1000);   // 回宫
-    log("东宫太子培养完成！");
+    log("东宫太子培养完成！");sleep(500);
 }
 
 function junjichu(){
     swipe(100,300,1000,300,300);sleep(100);
     swipe(100,300,1000,300,300);sleep(300);
     press(400,1120,10);sleep(1500);
-    press(110,1180,10);sleep(2000);
-    press(540,1860,10);sleep(500);
+    stat = images.detectsColor(captureScreen(), "#ff2b2726", 540,1500);
+    while(!stat){
+        press(110,1180,10);sleep(1000);
+        stat = images.detectsColor(captureScreen(), "#ff2b2726", 540,1500);sleep(300);
+    }
+    press(986,45,10);sleep(800);
     press(1020,50,10);sleep(1500);
     stat = images.detectsColor(captureScreen(), "#ff5095a2", 650,1300);
     while(stat){
@@ -117,7 +123,7 @@ function junjichu(){
         press(1020,50,10);sleep(500);
         stat = images.detectsColor(captureScreen(), "#ff5095a2", 650,1300);
     }
-    log("军机处理政完成！");
+    log("军机处理政完成！");sleep(500);
 }
 
 function hougong(){
@@ -140,22 +146,45 @@ function hougong(){
         sleep(1000);press(1030,55,10);sleep(200);
     }
     press(1020,50,10);sleep(1000);
-    log("后宫一键谈心完成！");
+    log("后宫一键谈心完成！");sleep(500);
 }
 
 function guojiarenwu(){
-    press(220,1535,10);sleep(500);
+    press(220,1535,10);sleep(1000);
     if(!images.detectsColor(captureScreen(), "#fff7f1d9", 1000,400)){
         press(220,1535,10);sleep(500);
     }
-    press(865,780,10);sleep(300);
-    press(540,1190,10);sleep(200);
+    press(865,780,10);sleep(1000);
+    press(540,1300,10);sleep(500);
     press(1020,50,10);sleep(1000);
-    log("获取国家奖励元宝完成！");
+    log("获取国家奖励元宝完成！");sleep(500);
 }
 
 // 僵尸一键讨伐
-function jiangshi(){}
+function jiangshi(){
+    press(990,1770,10);sleep(800);
+    swipe(100,300,1000,300,300);sleep(100);
+    swipe(100,300,1000,300,300);sleep(300);
+    press(915,1020,10);sleep(800);
+    var point = imgdect(jsfuben,560,360,420,660);
+    if(point){
+        press(point.x+300,point.y+240,10);sleep(300);
+        if(!images.detectsColor(captureScreen(), "#ffbf3a1d", 847,820)){
+            sleep(1000);
+            press(point.x+300,point.y+240,10);sleep(300);
+        }
+        press(847,820,10);sleep(800);
+        press(540,1440,10);sleep(3000);
+        press(540,300,10);sleep(500);
+        press(1020,50,10);sleep(500);
+        press(1020,50,10);sleep(500);
+    }else{
+        log("僵尸检测失败！");
+    }
+    press(1020,50,10);sleep(1000);
+    press(990,1770,10);sleep(800);
+    log("僵尸任务完成!");sleep(500);
+}
 
 // 苍龙七宿
 function canglong(){
@@ -167,7 +196,7 @@ function canglong(){
         press(540,1240,10);sleep(100);
     }
     sleep(500);
-    press(920,1750,10);sleep(1000);
+    press(920,1750,10);sleep(2000);
     if(images.detectsColor(captureScreen(), "#fffdfabc", 938,1769)){
         sleep(500)
         press(530,1780,10);sleep(1500);
@@ -179,7 +208,7 @@ function canglong(){
         }
         press(940,1820,10);sleep(1000);
         press(1030,55,10);sleep(200);
-        press(920,1750,10);sleep(1000);
+        press(920,1750,10);sleep(2000);
     }
     sleep(3500);
     press(950,1770,10);sleep(200);
@@ -191,9 +220,9 @@ function canglong(){
         press(1040,75,10);sleep(500) ;
         stat = images.detectsColor(captureScreen(), "#fffdfabc", 938,1769);
     }
-    press(1020,50,10);sleep(500);
-    press(990,1770,10);sleep(1000);
-    log("苍龙七宿获取元宝及自动进攻完成！");
+    press(1020,50,10);sleep(800);
+    press(990,1770,10);sleep(1200);
+    log("苍龙七宿获取元宝及自动进攻完成！");sleep(500);
 }
 
 function xianshi(){
