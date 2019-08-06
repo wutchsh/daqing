@@ -167,14 +167,14 @@ function jiangshi(){
     swipe(100,300,1000,300,300);sleep(100);
     swipe(100,300,1000,300,300);sleep(300);
     press(915,1020,10);sleep(800);
-    var point = imgdect(jsfuben,560,360,420,660);
+    var point = imgdect(jsfuben,560,360,420,1460);
     if(point){
-        press(point.x+300,point.y+240,10);sleep(500);
+        press(point.x+300,point.y+240,10);sleep(800);
         if(!images.detectsColor(captureScreen(), "#ffbf3a1d", 847,820)){
             sleep(1000);
-            press(point.x+300,point.y+240,10);sleep(500);
+            press(point.x+300,point.y+240,10);sleep(800);
         }
-        press(847,820,10);sleep(800);
+        press(847,820,10);sleep(1200);
         log("僵尸军团扫荡界面！");sleep(200);
         press(540,1440,10);sleep(3000);
         press(540,300,10);sleep(500);
@@ -214,11 +214,11 @@ function canglong(){
     }
     log("进入苍龙七宿战斗界面！");sleep(3500);
     press(950,1770,10);sleep(200);
-    press(950,1770,10);sleep(30000);
+    press(950,1770,10);sleep(10000);
     press(1040,75,10);sleep(500);
     var stat = images.detectsColor(captureScreen(), "#fffdfabc", 938,1769);
     while(!stat){
-        sleep(5000);
+        press(900,950,10);sleep(5000);
         press(1040,75,10);sleep(500) ;
         stat = images.detectsColor(captureScreen(), "#fffdfabc", 938,1769);
     }
