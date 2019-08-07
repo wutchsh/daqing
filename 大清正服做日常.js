@@ -19,12 +19,12 @@ var jsfuben = images.read(dir+"/jsfuben.png");  // 僵尸副本入口
 
 main();
 function main(){
-    // mobai();
-    // huangzi();
-    // taizi();
-    // junjichu();
-    // hougong();
-    // guojiarenwu();
+    mobai();
+    huangzi();
+    taizi();
+    junjichu();
+    hougong();
+    guojiarenwu();
     jiangshi();
     canglong();
     xianshi();
