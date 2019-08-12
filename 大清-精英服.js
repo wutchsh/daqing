@@ -1,6 +1,6 @@
 /*  
     作者:wuhtchsh@gmail.com
-    游戏版本：我在大清当皇帝(v5.6.1)
+    游戏版本：我在大清当皇帝(v5.70)
     请勿用作商业用途，禁止用此脚本及衍生脚本盈利。
 */
 
@@ -209,8 +209,8 @@ function mail(){
             press(mailpoint2.x+110,mailpoint2.y+35,10);sleep(300);
             log("没有可领取资源\t<--------");sleep(100);
         }
-        press(420,220,10);sleep(400);
-        press(180,220,10);sleep(500);
+        press(420,220,10);sleep(500);
+        press(180,220,10);sleep(1000);
         mailpoint = imgdect(mailimg, 50, 330, 250, 200);
     }
     press(1010,90,10);sleep(500);
@@ -233,14 +233,16 @@ function daily(){
             press(755,1080,10);sleep(200);
         }
         press(point1.x+80,point1.y+290,10);sleep(300);
+        press(point1.x+80,point1.y+290,10);sleep(300);
 
         point1 = imgdect(template1, 120, 630, 510, 300);
         if(point1){
             sleep(300);
             press(point1.x+80,point1.y+290,10);sleep(100);
+            press(point1.x+80,point1.y+290,10);sleep(300);
             press(point1.x+80,point1.y+290,10);sleep(600);
         }
-        swipe(700,1600,700,900,400);sleep(200);
+        swipe(700,1600,700,900,400);sleep(800);
         press(540,1290,10);sleep(300);  // 淸帝碎片
         press(540,1290,10);sleep(300);
         if(images.detectsColor(captureScreen(), "#ffe5e2ce", 540,1135)){
