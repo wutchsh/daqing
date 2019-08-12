@@ -19,16 +19,16 @@ var jsfuben = images.read(dir+"/jsfuben.png");  // 僵尸副本入口
 
 main();
 function main(){
-    mobai();
-    huangzi();
-    taizi();
+    // mobai();
+    // huangzi();
+    // taizi();
     junjichu();
     hougong();
     guojiarenwu();
     jiangshi();
-    canglong();
     xianshi();
     mail();
+    canglong();
     log("全部处理完成！")
 }
 
@@ -111,18 +111,29 @@ function junjichu(){
     swipe(100,280,1000,300,300);sleep(100);
     swipe(100,280,1000,300,300);sleep(300);
     press(400,1120,10);sleep(1500);
+    var n = 0;
     stat = images.detectsColor(captureScreen(), "#ff2b2726", 540,1500);
     while(!stat){
         press(110,1180,10);sleep(1000);
         stat = images.detectsColor(captureScreen(), "#ff2b2726", 540,1500);sleep(300);
+        n += 1;sleep(1000);
+        if(n>5){
+            break;
+        }
     }
-    press(986,45,10);sleep(800);
-    press(1020,90,10);sleep(1000);
-    stat = images.detectsColor(captureScreen(), "#ff5095a2", 650,1300);
-    while(stat){
-        sleep(1000);
+    if(n<6){
+        press(986,45,10);sleep(800);
         press(1020,90,10);sleep(1000);
         stat = images.detectsColor(captureScreen(), "#ff5095a2", 650,1300);
+        while(stat){
+            sleep(1000);
+            press(1020,90,10);sleep(1000);
+            stat = images.detectsColor(captureScreen(), "#ff5095a2", 650,1300);
+        }
+    }
+    else{
+        sleep(1000);
+        press(1020,90,10);sleep(1000);
     }
     log("军机处理政完成！");sleep(500);
 }
@@ -188,46 +199,6 @@ function jiangshi(){
     log("僵尸任务完成!");sleep(500);
 }
 
-// 苍龙七宿
-function canglong(){
-    press(990,1770,10);sleep(800);
-    swipe(100,280,1000,300,300);sleep(100);
-    swipe(100,280,1000,300,300);sleep(300);
-    press(630,540,10);sleep(500);
-    for(k=0;k<20;k++){
-        press(540,1240,10);sleep(100);
-    }
-    sleep(500);
-    press(920,1750,10);sleep(2000);
-    if(images.detectsColor(captureScreen(), "#fffdfabc", 938,1769)){
-        log("需要重新配置大臣!");sleep(500)
-        press(530,1780,10);sleep(1500);
-        for(i=0;i<5;i++){
-            if(images.detectsColor(captureScreen(), "#ff4d4641", 900,445+285*i)){
-                press(900,445+285*i,10);sleep(600);
-                press(815,425,10);sleep(200);
-            }  
-        }
-        press(940,1820,10);sleep(1000);
-        press(1030,55,10);sleep(200);
-        press(920,1750,10);sleep(2000);
-    }
-    log("进入苍龙七宿战斗界面！");sleep(3500);
-    press(950,1770,10);sleep(200);
-    press(950,1770,10);sleep(10000);
-    press(1040,75,10);sleep(500);
-    var stat = images.detectsColor(captureScreen(), "#fffdfabc", 938,1769);
-    while(!stat){
-        press(900,950,10);sleep(5000);
-        press(1040,75,10);sleep(500) ;
-        stat = images.detectsColor(captureScreen(), "#fffdfabc", 938,1769);
-    }
-    log("苍龙七宿战斗完成！");sleep(200);
-    press(1020,90,10);sleep(1000);
-    press(990,1770,10);sleep(1200);
-    log("苍龙七宿获取元宝及自动进攻完成！");sleep(500);
-}
-
 function xianshi(){
     var point1 = imgdect(template1,540,200,520,800);sleep(100);
     if(point1){
@@ -281,4 +252,44 @@ function mail(){
     press(1010,90,10);sleep(500);
     log("领取邮件完成！");
     sleep(1000);
+}
+
+// 苍龙七宿
+function canglong(){
+    press(990,1770,10);sleep(800);
+    swipe(100,280,1000,300,300);sleep(100);
+    swipe(100,280,1000,300,300);sleep(300);
+    press(630,540,10);sleep(500);
+    for(k=0;k<20;k++){
+        press(540,1240,10);sleep(200);
+    }
+    sleep(500);
+    press(920,1750,10);sleep(2000);
+    if(images.detectsColor(captureScreen(), "#fffdfabc", 938,1769)){
+        log("需要重新配置大臣!");sleep(500)
+        press(530,1780,10);sleep(1500);
+        for(i=0;i<5;i++){
+            if(images.detectsColor(captureScreen(), "#ff4d4641", 900,445+285*i)){
+                press(900,445+285*i,10);sleep(600);
+                press(815,425,10);sleep(200);
+            }  
+        }
+        press(940,1820,10);sleep(1000);
+        press(1030,55,10);sleep(200);
+        press(920,1750,10);sleep(2000);
+    }
+    log("进入苍龙七宿战斗界面！");sleep(3500);
+    press(950,1770,10);sleep(200);
+    press(950,1770,10);sleep(10000);
+    press(1040,75,10);sleep(500);
+    var stat = images.detectsColor(captureScreen(), "#fffdfabc", 938,1769);
+    while(!stat){
+        press(900,950,10);sleep(5000);
+        press(1040,75,10);sleep(500) ;
+        stat = images.detectsColor(captureScreen(), "#fffdfabc", 938,1769);
+    }
+    log("苍龙七宿战斗完成！");sleep(200);
+    press(1020,90,10);sleep(1000);
+    press(990,1770,10);sleep(1200);
+    log("苍龙七宿获取元宝及自动进攻完成！");sleep(500);
 }
