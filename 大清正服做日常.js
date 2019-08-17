@@ -19,9 +19,9 @@ var jsfuben = images.read(dir+"/jsfuben.png");  // 僵尸副本入口
 
 main();
 function main(){
-    // mobai();
-    // huangzi();
-    // taizi();
+    mobai();
+    huangzi();
+    taizi();
     junjichu();
     hougong();
     guojiarenwu();
@@ -29,7 +29,7 @@ function main(){
     xianshi();
     mail();
     canglong();
-    log("全部处理完成！")
+    log("全部处理完成！");
 }
 
 function imgdect(temp,x,y,w,h){ 
@@ -211,17 +211,17 @@ function xianshi(){
             while(point3){
                 press(540,point3.y+100,10);sleep(200);
                 press(540,1850,10);sleep(10);
-                press(540,1850,10);sleep(200);
+                press(540,1850,10);sleep(400);
                 press(770,1000,10);sleep(10);
-                press(770,1000,10);sleep(200);
+                press(770,1000,10);sleep(400);
                 press(1030,50,10);sleep(1300);
-                point3 = imgdect(template3,220,250,60,1400);sleep(100);
+                point3 = imgdect(template3,220,250,60,1400);sleep(500);
             }
             log("领取限时奖励完成！");sleep(1000)
         }
     }
     press(1010,50,10);sleep(800);
-    press(1010,50,10);sleep(1000);
+    press(1010,50,10);sleep(1500);
 }
 
 //临时领取福利邮件
@@ -284,11 +284,11 @@ function canglong(){
     press(1040,75,10);sleep(500);
     var stat = images.detectsColor(captureScreen(), "#fffdfabc", 938,1769);
     while(!stat){
-        press(900,950,10);sleep(5000);
-        press(1040,75,10);sleep(500) ;
+        press(900,950,10);sleep(4000);
+        press(1040,75,10);sleep(3000) ;
         stat = images.detectsColor(captureScreen(), "#fffdfabc", 938,1769);
     }
-    log("苍龙七宿战斗完成！");sleep(200);
+    log("苍龙七宿战斗完成并退出战斗界面！");sleep(200);
     press(1020,90,10);sleep(1000);
     press(990,1770,10);sleep(1200);
     log("苍龙七宿获取元宝及自动进攻完成！");sleep(500);
