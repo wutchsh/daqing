@@ -28,9 +28,9 @@ var mailimg1 = images.read(dir+"/mailimg1.png");    //"领取"模板
 var mailimg2 = images.read(dir+"/mailimg2.png");    //"朕知道了"模板
 
 if(mode == 0){
-    acc = "";
+    acc = "wyxa";
     n0 = 1;
-    N = 10;
+    N = 20;
     // Array = [35,36,40];
 }
 else if(mode == 1){
@@ -53,7 +53,7 @@ function base(){
     press(540,980,10);sleep(100);
     press(540,980,10);sleep(100);
     press(540,980,10);sleep(2000);
-    libao();sleep(200);
+    // libao();sleep(200);
     mobai();sleep(200);
     press(1010,90,10);sleep(1000);  // 回宫，回到主界面
 
@@ -75,9 +75,9 @@ function base(){
     // shangyijian();
     // press(1010,90,10);sleep(1000);
 
-    // // 领取邮件福利
-    // mail();
-    // press(1010,90,10);sleep(1000);
+    // 领取邮件福利
+    mail();
+    press(1010,90,10);sleep(1000);
 
     press(90,100,10);sleep(1000);   // 点击头像
     press(880,1850,10);sleep(1000); // 选择区服
@@ -199,8 +199,8 @@ function mail(){
         var mailpoint1 = imgdect(mailimg1, 400, 600, 280, 1100);
         if(mailpoint1){
             press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(300);
-            press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(500);
-            press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(300);
+            press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(800);
+            press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(800);
             log("领取邮件成功");sleep(100);
         }
         else{

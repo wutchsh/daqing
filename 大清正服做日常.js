@@ -235,8 +235,8 @@ function mail(){
         var mailpoint1 = imgdect(mailimg1, 400, 600, 280, 1100);
         if(mailpoint1){
             press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(300);
-            press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(500);
-            press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(300);
+            press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(800);
+            press(mailpoint1.x+110,mailpoint1.y+35,10);sleep(800);
             log("领取邮件成功");sleep(100);
         }
         else{
