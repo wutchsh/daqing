@@ -27,7 +27,6 @@ function base(){
     newgamestart();sleep(2000);     // 进入新手引导流程
     press(90,100,10);sleep(1000);   // 点击头像
     press(880,1850,10);sleep(1000); // 选择区服
-    // log("账号"+accid+"--OK");
 }
 
 function inputacc(){
@@ -117,9 +116,8 @@ function newgamestart(){
 
     press(145,615,10);sleep(10);            //平壤
     press(145,615,10);sleep(500);
-
     for(j=0;j<3;j++){
-        press(820,1650,10);sleep(10);           //3次开战
+        press(820,1650,10);sleep(10);       //3次开战
         press(820,1650,10);sleep(1000);
         for(i=0;i<10;i++){
             press(540,1600,10);sleep(100);
@@ -135,16 +133,9 @@ function newgamestart(){
         press(540,1600,10);sleep(100);
     }
     sleep(2000);
-
-    press(540,960,10);sleep(10);                //BOSS
+    press(540,960,10);sleep(10);            //BOSS
     press(540,960,10);sleep(3000);
-    for(i=0;i<5;i++){
-        press(540,1600,10);sleep(100);
-        press(540,1600,10);sleep(100);
-    }
-    sleep(2000);
-
-    for(i=0;i<15;i++){
+    for(i=0;i<20;i++){
         press(540,1600,10);sleep(100);
         press(540,1600,10);sleep(100);
     }
@@ -152,24 +143,21 @@ function newgamestart(){
 
     press(980,100,10);sleep(10);       //回宫
     press(980,100,10);sleep(500);
-
-    press(100,1790,10);sleep(10);           //名臣
+    press(100,1790,10);sleep(10);      //名臣
     press(100,1790,10);sleep(500);
-
-    press(210,860,10);sleep(10);        //海兰察
+    press(210,860,10);sleep(10);       //海兰察
     press(210,860,10);sleep(500);
-    for(i=0;i<20;i++){                      //升级海兰察
+    for(i=0;i<20;i++){                 //升级海兰察
         press(800,637,10);sleep(100);
         press(800,637,10);sleep(100);
     }
     sleep(2000);
-
     for(i=0;i<5;i++){
         press(540,1600,10);sleep(100);
         press(540,1600,10);sleep(100);
     }
     sleep(2000);
-    press(540,1810,10);sleep(10);       //前往战斗
+    press(540,1810,10);sleep(10);           //前往战斗
     press(540,1810,10);sleep(500);
 
     press(205,800,10);sleep(10);            //首尔
@@ -191,7 +179,6 @@ function newgamestart(){
     press(1023,65,10);sleep(500); 
     press(980,100,10);sleep(10);       //回宫
     press(980,100,10);sleep(500);
-
     for(i=0;i<5;i++){
         press(540,1600,10);sleep(100);
         press(540,1600,10);sleep(100);
@@ -212,7 +199,6 @@ function newgamestart(){
         press(540,1600,10);sleep(100);
     }
     sleep(2000);
-
     press(215,1685,10);sleep(10);           //前往妃子谈心
     press(215,1685,10);sleep(500);
     for(i=0;i<5;i++){
@@ -220,10 +206,8 @@ function newgamestart(){
         press(540,1600,10);sleep(100);
     }
     sleep(2000);
-
     press(1040,56,10);sleep(500);       //点叉关闭
     press(980,100,10);sleep(500);
-
     for(i=0;i<5;i++){
         press(540,1600,10);sleep(100);
         press(540,1600,10);sleep(100);
@@ -232,14 +216,12 @@ function newgamestart(){
 
     press(635,185,10);sleep(10);        //七日登陆
     press(635,185,10);sleep(500);
-
     for(i=0;i<5;i++){
         press(540,1624,10);sleep(100);
         press(540,1624,10);sleep(100);
     }
     sleep(2000);
     press(935,1220,10);sleep(500);
-
     for(i=0;i<10;i++){
         press(540,1624,10);sleep(100);
         press(540,1624,10);sleep(100);
