@@ -110,7 +110,7 @@ function account(){
     press(540,1040,10);sleep(500);  //按钮“切换账号”
     inputacc();
     while(images.detectsColor(captureScreen(), "#fff7f2d3", 250,925)){
-        log("**账号:"+ accid +"：该账号未注册！\n\n");sleep(500);
+        log("**账号:"+ accid +"：该账号未注册！\n");sleep(500);
         n += 1;
         inputacc();
     }
@@ -131,7 +131,7 @@ function yueka(){
         log("账号:"+ accid +",已领取月卡！");sleep(100);
     }
     else{
-        log("账号:"+ accid +",未激活月卡！<--------");sleep(100);
+        log("账号:"+ accid +",未激活月卡\t<--------");sleep(100);
     }
     press(770,1800,10);sleep(600);
     point9 = imgdect(template9,550,1280,400,140);sleep(50);
@@ -148,7 +148,7 @@ function yueka(){
         log("账号:"+ accid +",已领取至尊月卡！");sleep(100);
     }
     else{
-        log("账号:"+ accid +",未激活至尊月卡！<--------");sleep(100);
+        log("账号:"+ accid +",未激活至尊月卡\t<--------");sleep(100);
     }
 }
 
@@ -265,10 +265,10 @@ function daily(){
         press(870,1760,10);sleep(200);
         press(870,1760,10);sleep(300);
 
-        log("账号:"+ accid + ",每日资源-OK！\n");sleep(1000);
+        log("账号:"+ accid + ",每日资源-OK！");sleep(1000);
     }
     else{
-        log("**账号:"+ accid + ",每日资源已被领取！\t<----------\n");sleep(1000);
+        log("**账号:"+ accid + ",每日资源已被领取\t<----------");sleep(1000);
     }
 }
 
@@ -285,10 +285,10 @@ function weekly(){
             press(755,1080,10);sleep(200);
         }
         press(point2.x+80,point2.y+290,10);sleep(200);
-        log("账号:"+ accid + ",每周资源-OK！\n");sleep(1000);
+        log("账号:"+ accid + ",每周资源-OK！");sleep(1000);
     }
     else{
-        log("**账号:"+ accid + ",每周资源已被领取！\n");sleep(1000);
+        log("**账号:"+ accid + ",每周资源已被领取！");sleep(1000);
     }
 }
 
@@ -306,7 +306,7 @@ function yuanbao() {
         press(760,1230,10);sleep(400);
         press(540,980,10);sleep(100);
         press(540,980,10);sleep(500);
-        log("账号:"+ accid + ",使用元宝红包-OK！\n");sleep(1000);
+        log("账号:"+ accid + ",使用元宝红包-OK！");sleep(1000);
     }
     else{
         swipe(540,1300,540,300,300);sleep(200);
@@ -319,10 +319,10 @@ function yuanbao() {
             press(760,1230,10);sleep(400);
             press(540,980,10);sleep(200);
             press(540,980,10);sleep(500);
-            log("账号:"+ accid + ",使用元宝红包-OK！\n");sleep(1000);
+            log("账号:"+ accid + ",使用元宝红包-OK！");sleep(1000);
         }
         else{
-            log("**账号:"+ accid + ",未找到元宝红包！  \t<----------\n");sleep(1000);
+            log("**账号:"+ accid + ",未找到元宝红包\t<----------");sleep(1000);
         }
     }
 }
@@ -352,7 +352,7 @@ function saveimg(){
         images.save(img, dir+"/imgtemp/"+accid+".png", format = "png", quality = 100);sleep(200);
     }
     sleep(200);
-    log("账号:"+ accid + ",元宝截图-OK！\n\n");sleep(200);
+    log("账号:"+ accid + ",元宝截图-OK！");sleep(200);
 }
 
 function vip(){
@@ -382,10 +382,10 @@ function vip(){
             press(920,1350,10);sleep(10);press(920,1170,10);sleep(20);
             press(920,1590,10);sleep(10);press(920,1590,10);sleep(20);
         }
-        log("账号:"+ accid + ",领取累充成功！\n");sleep(1000);
+        log("账号:"+ accid + ",领取累充成功！");sleep(1000);
     }
     else{
-        log("账号:"+ accid + ",检测累充失败！    \t<----------\n");sleep(200);
+        log("账号:"+ accid + ",检测累充失败\t<----------");sleep(200);
     }
     // 领取日充奖励
     if(point4){
@@ -396,10 +396,10 @@ function vip(){
             press(920,1345,10);sleep(10);press(920,1345,10);sleep(30);
             press(920,1325,10);sleep(10);press(920,1345,10);sleep(40);
         }
-        log("账号:"+ accid + ",领取日充成功！\n");sleep(1000);
+        log("账号:"+ accid + ",领取日充成功！");sleep(1000);
     }
     else{
-        log("账号:"+ accid + ",检测日充失败！    \t<----------\n\n");sleep(200);
+        log("账号:"+ accid + ",检测日充失败\t<----------");sleep(200);
     }
     // 领取每周充值礼包
     press(point4.x+280,point4.y+70,10);sleep(500);
