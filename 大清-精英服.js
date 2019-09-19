@@ -1,6 +1,6 @@
 /*  
     作者:wuhtchsh@gmail.com
-    游戏版本：我在大清当皇帝(v5.70)
+    游戏版本：我在大清当皇帝(v5.80)
     请勿用作商业用途，禁止用此脚本及衍生脚本盈利。
 */
 
@@ -29,7 +29,7 @@ var mailimg2 = images.read(dir+"/mailimg2.png");    //"朕知道了"模板
 
 if(mode == 0){
     acc = "wyxa";
-    n0 = 3;
+    n0 = 1;
     N = 20;
     // Array = [35,36,40];
 }
@@ -41,7 +41,6 @@ else if(mode == 1){
 }
 
 function base(){
-    // 切换账号并进入珍宝阁道具界面
     account();sleep(1000);
     press(540,1600,10);sleep(600); // 登基&上朝，进入金銮殿界面
     press(540,1110,10);sleep(200);  //可能出现的领取充值礼包界面及VIP等级提升界面
@@ -62,9 +61,9 @@ function base(){
     weekly();
     press(1010,90,10);sleep(2000);
     
-    // 领取VIP充值礼包，需要时打开该功能
-    vip();
-    press(1010,90,10);sleep(1000);
+    // // 领取VIP充值礼包，需要时打开该功能
+    // vip();
+    // press(1010,90,10);sleep(1000);
 
     // 使用元宝红包
     yuanbao();
