@@ -21,7 +21,7 @@ function imgdect(temp,x,y,w,h){
 // 定点色彩识别
 // stat = images.detectsColor(captureScreen(), "#ffe5e2ce", 540,1135)
 // var img = captureScreen();sleep(500);
-// var point = [1045,1085];
+// var point = [770,1355];
 // var c = images.pixel(img,point[0],point[1]);
 // var msg = "";
 // msg += colors.toString(c);
@@ -30,6 +30,16 @@ function imgdect(temp,x,y,w,h){
 
 
 // device.setBrightness(5);
+
+// 判断文件是否存在，不存在则创建
+// function file(){
+//     if(!files.exists(fileurl)){
+//         files.create(fileurl);sleep(1000);
+//     }
+//     else{
+//         log("文件已经存在！");sleep(100);
+//     }
+// }
 
 // log(app.getPackageName("玄元剑仙"));
 // log(app.getAppName("com.szxchd.yqxx.dodsdk"));
@@ -52,10 +62,8 @@ function imgdect(temp,x,y,w,h){
 
 
 
-
-
-
-
+log("<------A------>");
+exit();
 
 // ***************************************  副 本 相 关  *************************************** //
 
