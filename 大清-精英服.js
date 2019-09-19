@@ -61,9 +61,9 @@ function base(){
     weekly();
     press(1010,90,10);sleep(2000);
     
-    // // 领取VIP充值礼包，需要时打开该功能
-    // vip();
-    // press(1010,90,10);sleep(1000);
+    // 领取VIP充值礼包，需要时打开该功能
+    vip();
+    press(1010,90,10);sleep(1000);
 
     // 使用元宝红包
     yuanbao();
