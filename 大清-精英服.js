@@ -23,6 +23,7 @@ var template6 = images.read(dir+"/libao.png");
 var template7 = images.read(dir+"/rank.png");
 var template8 = images.read(dir+"/newversion.png");
 var template9 = images.read(dir+"/lingqu.png");
+var template10 = images.read(dir+"/shouchong.png");
 var mailimg = images.read(dir+"/mail.png");
 var mailimg1 = images.read(dir+"/mailimg1.png");    //"领取"模板
 var mailimg2 = images.read(dir+"/mailimg2.png");    //"朕知道了"模板
@@ -53,9 +54,9 @@ function base(){
     press(540,980,10);sleep(100);
     press(540,980,10);sleep(100);
     press(540,980,10);sleep(2000);
-    // libao();sleep(200);
+    libao();sleep(200);
     mobai();sleep(200);
-    press(1010,90,10);sleep(1000);  // 回宫，回到主界面
+    press(1010,90,10);sleep(5000);  // 回宫，回到主界面
 
     // 领取每日资源、每周资源
     daily();
@@ -79,9 +80,8 @@ function base(){
     mail();
     press(1010,90,10);sleep(1000);
 
-    press(90,100,10);sleep(1000);   // 点击头像
-    press(880,1850,10);sleep(1000); // 选择区服
-    log("账号"+accid+"--OK");
+    press(90,100,10);sleep(1200);   // 点击头像
+    press(880,1825,10);sleep(1200); // 选择区服
 }
 
 function imgdect(temp,x,y,w,h){ 
@@ -128,10 +128,25 @@ function account(){
     }
 }
 
-
 function yueka(){
-    press(770,1800,10);sleep(600);
     var point9 = imgdect(template9,550,1280,400,140);sleep(50);
+    if(point9){
+        press(point9.x+180,point9.y+50,10);sleep(20);
+        press(point9.x+180,point9.y+50,10);sleep(50);
+        press(540,1100,10);sleep(10);
+        press(540,1100,10);sleep(10);
+        press(540,1100,10);sleep(10);
+        press(540,1100,10);sleep(500);
+        log("账号:"+ accid +",已领取月卡！");sleep(100);
+    }
+    else if(images.detectsColor(captureScreen(), "#fff3f0e6", 770,1355)){
+        log("账号:"+ accid +",已领取月卡！");sleep(100);
+    }
+    else{
+        log("账号:"+ accid +",未激活月卡！<--------");sleep(100);
+    }
+    press(770,1800,10);sleep(600);
+    point9 = imgdect(template9,550,1280,400,140);sleep(50);
     if(point9){
         press(point9.x+180,point9.y+50,10);sleep(20);
         press(point9.x+180,point9.y+50,10);sleep(50);
@@ -149,13 +164,12 @@ function yueka(){
     }
 }
 
-
 function libao(){
     press(100,300,10);sleep(600);
-    yueka();sleep(800);             // 至尊月卡领取
+    yueka();sleep(800);             // 月卡(含至尊月卡)领取
     swipe(900,1750,150,1750,300);sleep(500);
-    var point6 = imgdect(template6,640,1700,420,200);sleep(20);
-    var point8 = imgdect(template8,640,1700,420,200);sleep(20);
+    var point6 = imgdect(template6,640,1700,420,200);sleep(50);
+    var point8 = imgdect(template8,850,1700,200,200);sleep(50);
     if(point6){
         press(point6.x+70,point6.y+70,10);sleep(500);
         press(540,1340,10);sleep(20)
@@ -172,7 +186,6 @@ function libao(){
     }
     press(1010,90,10);sleep(1000);  // 返回金銮殿
 }
-
 function mobai(){
     var point7 = imgdect(template7,10,200,180,700);sleep(20);
     if(point7){
@@ -184,8 +197,11 @@ function mobai(){
             }
             swipe(900,1200,600,1200,200);sleep(300);
         }
+        press(1010,90,10);sleep(1000);  // 返回金銮殿
     }
-    press(1010,90,10);sleep(1000);  // 返回金銮殿
+    else{
+        log("当日已膜拜！");
+    }
 }
 
 //临时领取福利邮件
@@ -221,7 +237,7 @@ function mail(){
 // 每日资源（元宝红包、升爵套装、升星碎片）
 function daily(){
     sleep(1000);
-    press(630,1830,10);sleep(800);  // 由主界面进入商城
+    press(630,1710,10);sleep(800);  // 由主界面进入商城
     var point1 = imgdect(template1, 450, 630, 510, 300);
     if(point1){
         sleep(150);
@@ -291,7 +307,7 @@ function weekly(){
 // 定义查找元宝红包并使用红包函数
 function yuanbao() {
     sleep(1000);
-    press(450,1830,10);sleep(1000);  // 由主界面进入珍宝阁
+    press(450,1710,10);sleep(1000);  // 由主界面进入珍宝阁
     press(420,230,10);sleep(500);   // 道具
     var point0 = imgdect(template, 80, 300, 920, 1200);
     if(point0){
@@ -352,34 +368,47 @@ function saveimg(){
 }
 
 function vip(){
-    press(980,200,10);sleep(2000);
+    press(980,180,10);sleep(2000);
     swipe(220,1720,850,1720,500);sleep(500);
-    press(950,1800,10);sleep(200);
+    press(950,1800,10);sleep(500);
     var point3 = imgdect(template3,20,1700,800,200);sleep(20);
     var point4 = imgdect(template4,20,1700,800,200);sleep(20);
+    var point10 = imgdect(template10,20,1700,400,200);sleep(20);
 
+    // 领取首充奖励
+    if(point10){
+        log("检测首充成功！");sleep(100);
+        press(point10.x+70,point10.y+70,10);sleep(500);
+        press(830,1395,10);sleep(200);
+        press(540,1300,10);sleep(100);
+        press(540,1300,10);sleep(200);
+        press(540,1300,10);sleep(2000);
+    }
     // 领取累充奖励
     if(point3){
-        press(point3.x+70,point3.y+70,10);sleep(200);
+        log("检测累充成功！");sleep(100);
+        press(point3.x+70,point3.y+70,10);sleep(500);
         for(i=1;i<=90;i++){     //  默认90
             press(920,770,10);sleep(10);press(920,770,10);sleep(20);
             press(920,1170,10);sleep(10);press(920,1170,10);sleep(20);
+            press(920,1350,10);sleep(10);press(920,1170,10);sleep(20);
             press(920,1590,10);sleep(10);press(920,1590,10);sleep(20);
         }
-        files.append(logurl, "账号:"+ accid + ",领取累充成功！\n", encoding = 'utf-8');sleep(200);
+        files.append(logurl, "账号:"+ accid + ",领取累充成功！\n", encoding = 'utf-8');sleep(1000);
     }
     else{
         files.append(logurl, "账号:"+ accid + ",检测累充失败！    \t<----------\n", encoding = 'utf-8');sleep(200);
     }
     // 领取日充奖励
     if(point4){
+        log("检测日充成功！");sleep(100);
         press(point4.x+70,point4.y+70,10);sleep(500);
-        for(i=1;i<=70;i++){     //  默认70
-            press(920,725,10);sleep(10);press(920,725,10);sleep(20);
-            press(920,1345,10);sleep(10);press(920,1345,10);sleep(10);
-            press(920,1325,10);sleep(10);press(920,1345,10);sleep(15);
+        for(i=1;i<=80;i++){     //  默认80
+            press(920,725,10);sleep(10);press(920,725,10);sleep(30);
+            press(920,1345,10);sleep(10);press(920,1345,10);sleep(30);
+            press(920,1325,10);sleep(10);press(920,1345,10);sleep(40);
         }
-        files.append(logurl, "账号:"+ accid + ",领取日充成功！\n", encoding = 'utf-8');sleep(200);
+        files.append(logurl, "账号:"+ accid + ",领取日充成功！\n", encoding = 'utf-8');sleep(1000);
     }
     else{
         files.append(logurl, "账号:"+ accid + ",检测日充失败！    \t<----------\n\n", encoding = 'utf-8');sleep(200);
@@ -415,6 +444,7 @@ function main(){
     for(n = n0;n <= N;n++){
         sleep(500);
         base();
+        log("账号"+accid+"--OK");
     }
     // 运行结束关闭屏幕并循环震动通知
     device.setBrightness(5);
