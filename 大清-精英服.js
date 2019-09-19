@@ -12,7 +12,6 @@ var acc = "";
 var accid = "";
 var Array = [];
 var mode = 0;
-var logurl = "";
 var template = images.read(dir+"/temp.png");
 var template1 = images.read(dir+"/daily.png");
 var template2 = images.read(dir+"/weekly.png");
@@ -30,7 +29,7 @@ var mailimg2 = images.read(dir+"/mailimg2.png");    //"朕知道了"模板
 
 if(mode == 0){
     acc = "wyxa";
-    n0 = 1;
+    n0 = 3;
     N = 20;
     // Array = [35,36,40];
 }
@@ -56,16 +55,16 @@ function base(){
     press(540,980,10);sleep(2000);
     libao();sleep(200);
     mobai();sleep(200);
-    press(1010,90,10);sleep(5000);  // 回宫，回到主界面
+    press(1010,90,10);sleep(6000);  // 回宫，回到主界面
 
     // 领取每日资源、每周资源
     daily();
     weekly();
     press(1010,90,10);sleep(2000);
     
-    // // 领取VIP充值礼包，需要时打开该功能
-    // vip();
-    // press(1010,90,10);sleep(1000);
+    // 领取VIP充值礼包，需要时打开该功能
+    vip();
+    press(1010,90,10);sleep(1000);
 
     // 使用元宝红包
     yuanbao();
@@ -93,16 +92,6 @@ function imgdect(temp,x,y,w,h){
     return point;
 }
 
-// 判断日志文件是否存在，不存在则创建
-function logfile(){
-    if(!files.exists(logurl)){
-        files.create(logurl);sleep(1000);
-    }
-    else{
-        log("日志文件已经存在！");sleep(100);
-    }
-}
-
 function inputacc(){
     if(n < 10){
         accid = acc + "0"+ n;
@@ -122,7 +111,7 @@ function account(){
     press(540,1040,10);sleep(500);  //按钮“切换账号”
     inputacc();
     while(images.detectsColor(captureScreen(), "#fff7f2d3", 250,925)){
-        files.append(logurl, "**账号:"+ accid +"：该账号未注册！\n\n", encoding = 'utf-8');sleep(500);
+        log("**账号:"+ accid +"：该账号未注册！\n\n");sleep(500);
         n += 1;
         inputacc();
     }
@@ -277,10 +266,10 @@ function daily(){
         press(870,1760,10);sleep(200);
         press(870,1760,10);sleep(300);
 
-        files.append(logurl, "账号:"+ accid + ",每日资源-OK！\n", encoding = 'utf-8');sleep(1000);
+        log("账号:"+ accid + ",每日资源-OK！\n");sleep(1000);
     }
     else{
-        files.append(logurl, "**账号:"+ accid + ",每日资源已被领取！\t<----------\n", encoding = 'utf-8');sleep(1000);
+        log("**账号:"+ accid + ",每日资源已被领取！\t<----------\n");sleep(1000);
     }
 }
 
@@ -297,10 +286,10 @@ function weekly(){
             press(755,1080,10);sleep(200);
         }
         press(point2.x+80,point2.y+290,10);sleep(200);
-        files.append(logurl, "账号:"+ accid + ",每周资源-OK！\n", encoding = 'utf-8');sleep(1000);
+        log("账号:"+ accid + ",每周资源-OK！\n");sleep(1000);
     }
     else{
-        files.append(logurl, "**账号:"+ accid + ",每周资源已被领取！\n", encoding = 'utf-8');sleep(1000);
+        log("**账号:"+ accid + ",每周资源已被领取！\n");sleep(1000);
     }
 }
 
@@ -318,7 +307,7 @@ function yuanbao() {
         press(760,1230,10);sleep(400);
         press(540,980,10);sleep(100);
         press(540,980,10);sleep(500);
-        files.append(logurl, "账号:"+ accid + ",使用元宝红包-OK！\n", encoding = 'utf-8');sleep(1000);
+        log("账号:"+ accid + ",使用元宝红包-OK！\n");sleep(1000);
     }
     else{
         swipe(540,1300,540,300,300);sleep(200);
@@ -331,10 +320,10 @@ function yuanbao() {
             press(760,1230,10);sleep(400);
             press(540,980,10);sleep(200);
             press(540,980,10);sleep(500);
-            files.append(logurl, "账号:"+ accid + ",使用元宝红包-OK！\n", encoding = 'utf-8');sleep(1000);
+            log("账号:"+ accid + ",使用元宝红包-OK！\n");sleep(1000);
         }
         else{
-            files.append(logurl, "**账号:"+ accid + ",未找到元宝红包！  \t<----------\n", encoding = 'utf-8');sleep(1000);
+            log("**账号:"+ accid + ",未找到元宝红包！  \t<----------\n");sleep(1000);
         }
     }
 }
@@ -364,7 +353,7 @@ function saveimg(){
         images.save(img, dir+"/imgtemp/"+accid+".png", format = "png", quality = 100);sleep(200);
     }
     sleep(200);
-    files.append(logurl, "账号:"+ accid + ",元宝截图-OK！\n\n", encoding = 'utf-8');sleep(200);
+    log("账号:"+ accid + ",元宝截图-OK！\n\n");sleep(200);
 }
 
 function vip(){
@@ -394,10 +383,10 @@ function vip(){
             press(920,1350,10);sleep(10);press(920,1170,10);sleep(20);
             press(920,1590,10);sleep(10);press(920,1590,10);sleep(20);
         }
-        files.append(logurl, "账号:"+ accid + ",领取累充成功！\n", encoding = 'utf-8');sleep(1000);
+        log("账号:"+ accid + ",领取累充成功！\n");sleep(1000);
     }
     else{
-        files.append(logurl, "账号:"+ accid + ",检测累充失败！    \t<----------\n", encoding = 'utf-8');sleep(200);
+        log("账号:"+ accid + ",检测累充失败！    \t<----------\n");sleep(200);
     }
     // 领取日充奖励
     if(point4){
@@ -408,10 +397,10 @@ function vip(){
             press(920,1345,10);sleep(10);press(920,1345,10);sleep(30);
             press(920,1325,10);sleep(10);press(920,1345,10);sleep(40);
         }
-        files.append(logurl, "账号:"+ accid + ",领取日充成功！\n", encoding = 'utf-8');sleep(1000);
+        log("账号:"+ accid + ",领取日充成功！\n");sleep(1000);
     }
     else{
-        files.append(logurl, "账号:"+ accid + ",检测日充失败！    \t<----------\n\n", encoding = 'utf-8');sleep(200);
+        log("账号:"+ accid + ",检测日充失败！    \t<----------\n\n");sleep(200);
     }
     // 领取每周充值礼包
     press(point4.x+280,point4.y+70,10);sleep(500);
@@ -438,9 +427,7 @@ function main(){
     device.setBrightness(0);
     var date = new Date();
     var time = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
-    logurl = dir+"/log/log_"+time+".txt"
-    files.write(logurl, "", encoding = "utf-8");sleep(100);
-    files.append(logurl, "\n********** "+time+" **********\n", encoding = 'utf-8');sleep(200);
+    log("\n********** "+time+" **********\n");sleep(200);
     for(n = n0;n <= N;n++){
         sleep(500);
         base();
