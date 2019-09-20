@@ -1,3 +1,9 @@
+/*  
+    作者:wuhtchsh@gmail.com
+    游戏版本：我在大清当皇帝(v5.80)
+    请勿用作商业用途，禁止用此脚本及衍生脚本盈利。
+*/
+
 auto();
 images.requestScreenCapture();sleep(200);
 var n = 0;

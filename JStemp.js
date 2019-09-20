@@ -20,10 +20,10 @@ function imgdect(temp,x,y,w,h){
 
 // 定点色彩识别
 // stat = images.detectsColor(captureScreen(), "#ffe5e2ce", 540,1135)
-// var img = captureScreen();sleep(500);
-// var point = [770,1355];
-// var c = images.pixel(img,point[0],point[1]);
-// var msg = "";
+var img = captureScreen();sleep(500);
+var point = [540,1390];
+var c = images.pixel(img,point[0],point[1]);
+var msg = "";
 // msg += colors.toString(c);
 // toastLog(msg)
 // press(point[0],point[1],1000);
@@ -62,8 +62,7 @@ function imgdect(temp,x,y,w,h){
 
 
 
-log("<------A------>");
-exit();
+
 
 // ***************************************  副 本 相 关  *************************************** //
 

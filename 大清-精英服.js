@@ -54,16 +54,16 @@ function base(){
     press(540,980,10);sleep(2000);
     libao();sleep(200);
     mobai();sleep(200);
-    press(1010,90,10);sleep(6000);  // 回宫，回到主界面
+    press(1010,90,10);sleep(2000);  // 回宫，回到主界面
 
     // 领取每日资源、每周资源
     daily();
     weekly();
     press(1010,90,10);sleep(2000);
     
-    // 领取VIP充值礼包，需要时打开该功能
-    vip();
-    press(1010,90,10);sleep(1000);
+    // // 领取VIP充值礼包，需要时打开该功能
+    // vip();
+    // press(1010,90,10);sleep(1000);
 
     // 使用元宝红包
     yuanbao();
@@ -131,7 +131,7 @@ function yueka(){
         log("账号:"+ accid +",已领取月卡！");sleep(100);
     }
     else{
-        log("账号:"+ accid +",未激活月卡\t<--------");sleep(100);
+        log("账号:"+ accid +",未激活月卡\t\t<--------");sleep(100);
     }
     press(770,1800,10);sleep(600);
     point9 = imgdect(template9,550,1280,400,140);sleep(50);
@@ -430,7 +430,7 @@ function main(){
     for(n = n0;n <= N;n++){
         sleep(500);
         base();
-        log("账号"+accid+"--OK");
+        log("账号"+accid+"--OK\n");
     }
     // 运行结束关闭屏幕并循环震动通知
     device.setBrightness(5);
