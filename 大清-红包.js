@@ -8,6 +8,7 @@ auto();
 requestScreenCapture();sleep(200);
 var template = images.read("/sdcard/脚本/daqing/hongbao.png");
 
+
 function imgdect(temp,x,y,w,h){
     img0 = captureScreen();sleep(200);
     var point = images.findImage(img0, temp, {
