@@ -1,7 +1,7 @@
 /*  
     作者:wuhtchsh@gmail.com
-    游戏版本：我在大清当皇帝(v5.4)
-    请勿用作商业用途，禁止用此脚本及衍生脚本盈利
+    游戏版本：我在大清当皇帝(v5.80)
+    请勿用作商业用途，禁止用此脚本及衍生脚本盈利。
 */
 
 auto();
@@ -33,7 +33,7 @@ function hbstatus(){
 }
 
 while(true){
-    press(540,1700,10);sleep(200);
+    press(540,1840,10);sleep(200);
     hbstatus();
     if(images.detectsColor(captureScreen(), "#fffcfae2", 540,850)){
         log("检测到连接失败！");
