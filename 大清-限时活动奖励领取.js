@@ -1,6 +1,6 @@
 /*  
     作者:wuhtchsh@gmail.com
-    游戏版本：我在大清当皇帝(v5.6.1)
+    游戏版本：我在大清当皇帝(v5.80)
     请勿用作商业用途，禁止用此脚本及衍生脚本盈利。
 */
 
@@ -19,9 +19,9 @@ var template3 = images.read(dir+"/reddot.png");
 
 
 if(mode == 0){
-    acc = "csjyf";
+    acc = "wyxa";
     n0 = 1;
-    N = 15;
+    N = 20;
     // Array = [35,36,40];
 }
 else if(mode == 1){
@@ -68,21 +68,21 @@ function account(){
 function xianshi(){
     var point1 = imgdect(template1,540,200,520,800);sleep(100);
     if(point1){
-        press(point1.x+70,point1.y-30,10);sleep(500);
+        press(point1.x+70,point1.y+70,10);sleep(500);
         var point2 = imgdect(template2,530,330,500,1450);sleep(100);
         if(point2){
             press(point2.x+320,point2.y+180,10);sleep(800);
             var point3 = imgdect(template3,220,250,60,1400);sleep(100);
             while(point3){
-                press(540,point3.y+100,10);sleep(200);
+                press(540,point3.y+100,10);sleep(500);
                 press(540,1850,10);sleep(10);
-                press(540,1850,10);sleep(200);
+                press(540,1850,10);sleep(500);
                 press(770,1000,10);sleep(10);
-                press(770,1000,10);sleep(200);
-                press(1030,50,10);sleep(1300);
+                press(770,1000,10);sleep(500);
+                press(1030,50,10);sleep(1200);
                 point3 = imgdect(template3,220,250,60,1400);sleep(100);
             }
-            log("账号"+accid+"：领取限时奖励完成！");sleep(1000)
+            log("账号"+accid+"：领取限时奖励完成！");sleep(200)
         }
     }
     press(1010,50,10);sleep(800);  // 返回主界面
@@ -99,7 +99,7 @@ function base(){
     press(540,1110,10);sleep(3000); //默认5000
     press(540,980,10);sleep(100);
     press(540,980,10);sleep(200);
-    press(1010,90,10);sleep(800);  // 回宫，回到主界面
+    // press(1010,90,10);sleep(800);  // 回宫，回到主界面
 
     xianshi();sleep(500);
 
@@ -109,13 +109,13 @@ function base(){
 }
 
 function main(){
-    device.setBrightness(0);
+    // device.setBrightness(0);
     for(n = n0;n <= N;n++){
         sleep(500);
         base();
     }
     // 运行结束关闭屏幕并循环震动通知
-    device.setBrightness(5);
+    // device.setBrightness(5);
     for(k=0;k<10;k++){
         device.vibrate(600);sleep(400);
         device.cancelVibration();sleep(200);
