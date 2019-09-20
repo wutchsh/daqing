@@ -64,7 +64,7 @@ function tuitu(){
             log("从尚衣监重新返回征战世界界面!");
         }
         else if(! stat0 && ! point){
-            log("1-10完毕!");
+            log("第一章1-10完毕,进入第二章!");sleep(100);
             press(540,1300,10);sleep(300);
         }
         else{
