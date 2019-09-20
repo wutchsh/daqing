@@ -44,7 +44,7 @@ function tuitu(){
                     press(540,1450,10);sleep(100);
                 }
                 if(images.detectsColor(captureScreen(), "#ffc43e21", 670,1440)){
-                    log("检测到'已阅'!");sleep(100);
+                    log("检测到'文明升级界面'!");sleep(100);
                     press(720,1440,10);sleep(1000);
                 }
                 stat0 = images.detectsColor(captureScreen(), "#ffbf3a1e", 940,1690);sleep(200);
