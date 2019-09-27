@@ -49,7 +49,9 @@ var msg = "";
 // shell("am force-stop com.szxchd.yqxx.dodsdk",true); sleep(1000);
 // app.launch("com.szxchd.yqxx.dodsdk");sleep(10000);
 
-
+// 获取电量百分百数
+// device.getBattery();
+// log("当前电量:"+device.getBattery()+"%");
 
 // ################ 代码测试 及时删除 ################## //
 
