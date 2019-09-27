@@ -217,17 +217,17 @@ function newgamestart(){
     //七日登陆
     press(635,185,10);sleep(10);
     press(635,185,10);sleep(800);
-    for(i=0;i<5;i++){
-        press(750,1500,10);sleep(100);
-        press(750,1500,10);sleep(100);
+    for(i=0;i<10;i++){
+        press(750,1500,10);sleep(50);
+        press(750,1500,10);sleep(50);
     }
-    sleep(2000);
+    sleep(1200);
     press(935,1220,10);sleep(1200);
-    for(i=0;i<5;i++){
-        press(750,1400,10);sleep(100);
-        press(750,1400,10);sleep(100);
+    for(i=0;i<10;i++){
+        press(750,1400,10);sleep(50);
+        press(750,1400,10);sleep(50);
     }
-    sleep(1000);
+    sleep(1200);
     press(980,100,10);sleep(10);            //回宫
     press(980,100,10);sleep(1000);
 }
