@@ -54,7 +54,7 @@ function account(){
     press(540,1040,10);sleep(500);          //按钮“切换账号”
     inputacc();
     while(images.detectsColor(captureScreen(), "#fff7f2d3", 250,925)){
-        files.append(logurl, "**账号:"+ accid +"：该账号未注册！\n\n", encoding = 'utf-8');sleep(500);
+        log("**账号:"+ accid +"：该账号未注册！\n");sleep(500);
         n += 1;
         inputacc();
     }
@@ -190,7 +190,7 @@ function newgamestart(){
         press(540,1600,10);sleep(100);
         press(540,1600,10);sleep(100);
     }
-    sleep(1000);
+    sleep(1200);
     press(235,1645,10);sleep(20);           //国运任务等级奖励
     press(235,1645,10);sleep(1500);
 
@@ -223,18 +223,19 @@ function newgamestart(){
     }
     sleep(1200);
     press(935,1220,10);sleep(1200);
-    for(i=0;i<10;i++){
+    for(i=0;i<20;i++){
         press(750,1400,10);sleep(50);
         press(750,1400,10);sleep(50);
     }
     sleep(1200);
     press(980,100,10);sleep(10);            //回宫
-    press(980,100,10);sleep(1000);
+    press(980,100,10);sleep(1500);
 }
 
 
 function main(){
     device.setBrightness(0);
+    log("当前电量:"+device.getBattery()+"%");sleep(100);
     for(n = n0;n <= N;n++){
         sleep(500);
         base();
