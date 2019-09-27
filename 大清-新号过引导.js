@@ -24,7 +24,7 @@ else if(mode == 1){
 
 function base(){
     // 切换账号并进入珍宝阁道具界面
-    account();sleep(1000);
+    // account();sleep(1000);
     press(540,1600,10);sleep(400);          // 登基&上朝，进入金銮殿界面
     press(540,1110,10);sleep(200);          //可能出现的领取充值礼包界面及VIP等级提升界面
     press(540,1110,10);sleep(200);
@@ -234,7 +234,7 @@ function newgamestart(){
 
 
 function main(){
-    device.setBrightness(20);
+    device.setBrightness(0);
     for(n = n0;n <= N;n++){
         sleep(500);
         base();
