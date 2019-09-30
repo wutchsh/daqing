@@ -10,7 +10,7 @@ auto();
 images.requestScreenCapture();sleep(200);
 device.setBrightness(0);
 var N = 2;      // 定义上书房空位或者生几个娃进行一次培养
-var M = 20;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
+var M = 5;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
 
 
 function tanxin(){
@@ -194,9 +194,7 @@ function main(){
     var date = new Date();
     var time = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
     log("****** "+time+" ******\n");
-    // 从后宫进入三宫六院再进入谈心界面
-    swipe(200,1050,800,1050,300);sleep(200);
-    press(730,830,10);sleep(500);
+    // 在谈心界面运行脚本
     for(j=0;j<M;j++){
         tanxin();
         peiyang(N);
