@@ -1,6 +1,6 @@
 /*  
     作者:wuhtchsh@gmail.com
-    游戏版本：我在大清当皇帝(v5.4)
+    游戏版本：我在大清当皇帝(v5.80)
     请勿用作商业用途，禁止用此脚本及衍生脚本盈利。
     后宫自动谈心生娃，达到指定数量后，跳转上书房
     自动取名，喂汤，一键培养
@@ -10,7 +10,7 @@ auto();
 images.requestScreenCapture();sleep(200);
 device.setBrightness(0);
 var N = 2;      // 定义上书房空位或者生几个娃进行一次培养
-var M = 5;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
+var M = 100;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
 
 
 function tanxin(){
@@ -41,7 +41,7 @@ function tanxin(){
             device.vibrate(1000);sleep(500);
             device.cancelVibration();sleep(200);
         }
-        exit();
+        Power();exit();
     }
 
     //平均3次谈心可获得一个娃娃，最多需要3*N次，极限7*N
@@ -83,7 +83,7 @@ function tanxin(){
                         device.vibrate(1000);sleep(500);
                         device.cancelVibration();sleep(200);
                     }
-                    exit();
+                    Power();exit();
                 }
             }
         }
@@ -93,7 +93,7 @@ function tanxin(){
         device.vibrate(1000);sleep(500);
         device.cancelVibration();sleep(200);
     }
-    exit();
+    Power();exit();
 
 }
 
@@ -157,7 +157,7 @@ function jiasu(m){
     for(i=0;i<m;i++){
         if(images.detectsColor(captureScreen(), "#ff656565", 810,488)){
             log("**活力丹用完了！\t\t<----------");
-            exit();
+            Power();exit();
         }
         // 循环检测培养是否成功
         while(!images.detectsColor(captureScreen(), "#ff4e4743", 810,488+295*i)){
@@ -191,6 +191,7 @@ function peiyang(N){
 }
 
 function main(){
+    device.setBrightness(0);
     var date = new Date();
     var time = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
     log("****** "+time+" ******\n");
@@ -211,6 +212,7 @@ function main(){
         device.vibrate(1000);sleep(500);
         device.cancelVibration();sleep(200);
     }
+    device.setBrightness(10);
     Power();
 }
 
