@@ -3,7 +3,8 @@ requestScreenCapture();sleep(100);
 
 function _TiQin(){
     // 批量提亲-confirm
-    var id = 661;
+    var id = 467;
+    sleep(500);
     function tiqin(){
         press(540,860,10);sleep(200);
         press(740,1120,10);sleep(400);
@@ -11,7 +12,7 @@ function _TiQin(){
         press(540,660,10);sleep(500);
         press(340,1290,10);sleep(1800);
     }
-    for(i=0;i<3;i++){
+    for(i=0;i<10;i++){
         for(j=0;j<4;j++){
             press(920,528+318*j,10);sleep(400);
             tiqin();
@@ -29,6 +30,8 @@ function _TiQin(){
 function _LianYin(){
     // 批量循环联姻
     while(true){
+        press(135,1750,10);sleep(10);
+        press(135,1750,10);sleep(50);
         press(880,525,10);sleep(500);
         press(340,780,10);sleep(200);
         press(340,1250,10);sleep(100);

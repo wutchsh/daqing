@@ -9,8 +9,8 @@
 auto();
 images.requestScreenCapture();sleep(200);
 device.setBrightness(0);
-var N = 2;      // 定义上书房空位或者生几个娃进行一次培养
-var M = 100;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
+var N = 1;      // 定义上书房空位或者生几个娃进行一次培养
+var M = 10;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
 
 
 function tanxin(){

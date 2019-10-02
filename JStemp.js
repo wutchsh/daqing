@@ -20,10 +20,10 @@ function imgdect(temp,x,y,w,h){
 
 // 定点色彩识别
 // stat = images.detectsColor(captureScreen(), "#ffe5e2ce", 540,1135)
-var img = captureScreen();sleep(500);
-var point = [540,1390];
-var c = images.pixel(img,point[0],point[1]);
-var msg = "";
+// var img = captureScreen();sleep(500);
+// var point = [540,1390];
+// var c = images.pixel(img,point[0],point[1]);
+// var msg = "";
 // msg += colors.toString(c);
 // toastLog(msg)
 // press(point[0],point[1],1000);
@@ -53,13 +53,16 @@ var msg = "";
 // device.getBattery();
 // log("当前电量:"+device.getBattery()+"%");
 
+//设置屏幕亮度
+// device.setBrightness(5);
+
+
 // ################ 代码测试 及时删除 ################## //
 
 // if(images.detectsColor(captureScreen(), "#ff5095a2", 650,1300)){
 //     sleep(1000);
 //     press(1020,50,10);sleep(500);
 // }
-
 
 
 
@@ -178,8 +181,10 @@ var msg = "";
 // }
 
 
-// // 批量联姻 
+// 批量联姻-confirm
 // while(true){
+//     press(135,1750,10);sleep(10);
+//     press(135,1750,10);sleep(50);
 //     press(880,525,10);sleep(500);
 //     press(340,780,10);sleep(200);
 //     press(340,1250,10);sleep(100);
