@@ -214,6 +214,7 @@ function _JiangShiwang(){
     }
 }
 
+_JiNeng();
 function _JiNeng(){
     // 技能升星
     var N = 10;     // 升级星数
@@ -222,10 +223,10 @@ function _JiNeng(){
         press(point[0]+235*i,point[1],20);sleep(50);
         press(point[0]+235*i,point[1],20);sleep(300);
         for(k=0;k<N;k++){
-            press(340,1415,10);sleep(100);
+            press(340,1340,10);sleep(100);
             swipe(300,1125,900,1125,100);sleep(100);
             press(740,1260,10);sleep(200);
-            press(540,1415,10);sleep(200);
+            press(540,1340,10);sleep(200);
         }
         press(1000,470,10);sleep(500);
     }
