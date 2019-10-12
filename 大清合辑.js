@@ -214,7 +214,6 @@ function _JiangShiwang(){
     }
 }
 
-_JiNeng();
 function _JiNeng(){
     // 技能升星
     var N = 10;     // 升级星数
