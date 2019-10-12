@@ -283,18 +283,18 @@ var msg = "";
 
 
 // // 升级技能
-// var N = 7;     // 升级星数
+// var N = 6;     // 升级星数
 // point = [180,1130];
 // for(i=0;i<4;i++){
-//     press(point[0]+235*i,point[1],10);sleep(20);
-//     press(point[0]+235*i,point[1],10);sleep(500);
+//     press(point[0]+235*i,point[1],20);sleep(50);
+//     press(point[0]+235*i,point[1],20);sleep(300);
 //     for(k=0;k<N;k++){
-//         press(340,1415,10);sleep(200);
-//         swipe(300,1125,900,1125,50);sleep(300);
-//         press(740,1260,10);sleep(300);
-//         press(540,1415,10);sleep(400);
+//         press(340,1340,10);sleep(100);
+//         swipe(300,1125,900,1125,100);sleep(100);
+//         press(740,1260,10);sleep(200);
+//         press(540,1340,10);sleep(200);
 //     }
-//     press(1000,470,10);sleep(800);
+//     press(1000,470,10);sleep(500);
 // }
 
 
