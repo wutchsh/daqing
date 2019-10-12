@@ -1,6 +1,6 @@
 /*  
     作者:wuhtchsh@gmail.com
-    游戏版本：我在大清当皇帝(v5.4)
+    游戏版本：我在大清当皇帝(v5.80)
     请勿用作商业用途，禁止用此脚本及衍生脚本盈利。
     后宫自动谈心生娃，达到指定数量后，跳转上书房
     自动取名，喂汤，一键培养
@@ -9,7 +9,7 @@
 auto();
 images.requestScreenCapture();sleep(200);
 var N = 2;      // 定义上书房空位或者生几个娃进行一次培养
-var M = 22;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
+var M = 2;     // 循环M次，如果丹药足够，累计生娃M*N个，因此根据需要合理的设定M值
 
 function tanxin(){
     var n = 0;                      //判断生娃是否到上书房最大数量
@@ -161,8 +161,8 @@ function main(){
     var time = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
     log("****** "+time+" ******\n");
     // 从后宫进入三宫六院再进入谈心界面
-    swipe(200,1050,800,1050,300);sleep(200);
-    press(730,830,10);sleep(500);
+    // swipe(200,1050,800,1050,300);sleep(200);
+    // press(730,830,10);sleep(500);
     for(j=0;j<M;j++){
         tanxin();
         peiyang(N);
