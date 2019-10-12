@@ -20,10 +20,10 @@ function imgdect(temp,x,y,w,h){
 
 // 定点色彩识别
 // stat = images.detectsColor(captureScreen(), "#ffe5e2ce", 540,1135)
-// var img = captureScreen();sleep(500);
-// var point = [540,1390];
-// var c = images.pixel(img,point[0],point[1]);
-// var msg = "";
+var img = captureScreen();sleep(500);
+var point = [480,1210];
+var c = images.pixel(img,point[0],point[1]);
+var msg = "";
 // msg += colors.toString(c);
 // toastLog(msg)
 // press(point[0],point[1],1000);
@@ -56,14 +56,14 @@ function imgdect(temp,x,y,w,h){
 //设置屏幕亮度
 // device.setBrightness(5);
 
+// 控制手机震动
+// device.vibrate(600);sleep(400);
 
 // ################ 代码测试 及时删除 ################## //
 
-// if(images.detectsColor(captureScreen(), "#ff5095a2", 650,1300)){
-//     sleep(1000);
-//     press(1020,50,10);sleep(500);
+// if(images.detectsColor(captureScreen(), "#fff7ca6b", 460,1285)){
+//     press(540,1285,10);sleep(200);
 // }
-
 
 
 
@@ -157,7 +157,7 @@ function imgdect(temp,x,y,w,h){
 
 
 // // 批量提亲-confirm
-// var id = 120;
+// var id = 291;
 // function tiqin(){
 //     press(540,860,10);sleep(200);
 //     press(740,1120,10);sleep(400);
@@ -166,7 +166,7 @@ function imgdect(temp,x,y,w,h){
 //     press(340,1290,10);sleep(1900);
 // }
 // sleep(500);
-// for(i=0;i<17 ;i++){
+// for(i=0;i<12 ;i++){
 //     for(j=0;j<4;j++){
 //         press(920,528+318*j,10);sleep(500);
 //         tiqin(); 

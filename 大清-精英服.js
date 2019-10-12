@@ -67,6 +67,7 @@ function base(){
 
     // 使用元宝红包
     yuanbao();
+    press(1010,90,10);sleep(1000);
     saveimg();
     press(1010,90,10);sleep(1000);
 
@@ -339,18 +340,15 @@ function ofArray(array,n){
 }
 
 function saveimg(){
+    sleep(500);
+    swipe(150,800,850,800,200);sleep(300);
+    swipe(150,800,850,800,200);sleep(300);
+    swipe(540,500,540,1500,200);sleep(300);
+    swipe(540,500,540,1500,200);sleep(300);
+    press(480,1180,10);sleep(500);
     files.ensureDir(dir+"/imgtemp/");sleep(200);
-    img = images.clip(captureScreen(),250,110,250,50);sleep(200);
-    var stat = ofArray(Array,n);
-    if(stat && mode == 0){
-        images.save(img, dir+"/imgtemp/"+accid+"-大娃.png", format = "png", quality = 100);sleep(200);
-    }
-    else if(stat && mode == 1){
-        images.save(img, dir+"/imgtemp/"+accid+"-已赠出.png", format = "png", quality = 100);sleep(200);
-    }
-    else{
-        images.save(img, dir+"/imgtemp/"+accid+".png", format = "png", quality = 100);sleep(200);
-    }
+    img = images.clip(captureScreen(),400,5,230,50);sleep(200);
+    images.save(img, dir+"/imgtemp/"+accid+".png", format = "png", quality = 100);sleep(200);
     sleep(200);
     log("账号:"+ accid + ",元宝截图-OK！");sleep(200);
 }
