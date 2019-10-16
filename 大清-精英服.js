@@ -42,10 +42,10 @@ else if(mode == 1){
 
 function base(){
     account();sleep(1000);
-    press(540,1600,10);sleep(600); // 登基&上朝，进入金銮殿界面
-    press(540,1110,10);sleep(200);  //可能出现的领取充值礼包界面及VIP等级提升界面
-    press(540,1110,10);sleep(50);
-    press(540,1110,10);sleep(50);
+    press(540,1600,10);sleep(800); // 登基&上朝，进入金銮殿界面
+    for(i=0;i<10;i++){
+        press(540,1110,10);sleep(50);  //可能出现的领取充值礼包界面及VIP等级提升界面
+    }
     press(540,1110,10);sleep(4500); //默认5000
     press(540,980,10);sleep(100);
     press(540,980,10);sleep(100);
