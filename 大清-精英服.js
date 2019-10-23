@@ -30,7 +30,7 @@ var mailimg2 = images.read(dir+"/mailimg2.png");    //"朕知道了"模板
 if(mode == 0){
     acc = "wyxa";
     n0 = 1;
-    N = 21;
+    N = 20;
     // Array = [35,36,40];
 }
 else if(mode == 1){
