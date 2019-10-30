@@ -1,6 +1,6 @@
 /*  
     作者:wuhtchsh@gmail.com
-    游戏版本：我在大清当皇帝(v5.80)
+    游戏版本：我在大清当皇帝(v5.90)
     请勿用作商业用途，禁止用此脚本及衍生脚本盈利。
 */
 
@@ -30,7 +30,7 @@ var mailimg2 = images.read(dir+"/mailimg2.png");    //"朕知道了"模板
 if(mode == 0){
     acc = "wyxa";
     n0 = 1;
-    N = 20;
+    N = 21;
     // Array = [35,36,40];
 }
 else if(mode == 1){
@@ -229,40 +229,48 @@ function daily(){
     if(point1){
         sleep(150);
         press(point1.x+80,point1.y+290,10);sleep(300);
+        press(750,1115,10);sleep(200);
         // 判断是否弹出购买确认界面
         img = captureScreen();sleep(100);
         if(images.detectsColor(img, "#ff0c8c93", 705,1080)){
             press(870,1180,10);sleep(100);
             press(755,1080,10);sleep(200);
         }
-        press(point1.x+80,point1.y+290,10);sleep(300);
+        press(point1.x+80,point1.y+290,10);sleep(50);
         press(point1.x+80,point1.y+290,10);sleep(300);
 
         point1 = imgdect(template1, 120, 630, 510, 300);
         if(point1){
             sleep(300);
             press(point1.x+80,point1.y+290,10);sleep(100);
+            press(750,1115,10);sleep(200);
+            press(point1.x+80,point1.y+290,10);sleep(50);
             press(point1.x+80,point1.y+290,10);sleep(300);
-            press(point1.x+80,point1.y+290,10);sleep(600);
         }
         swipe(700,1600,700,900,400);sleep(800);
-        press(540,1290,10);sleep(300);  // 淸帝碎片
-        press(540,1290,10);sleep(300);
+        press(540,1290,10);sleep(150);  // 淸帝碎片
+        press(750,1115,10);sleep(200);
+        press(540,1290,10);sleep(350);
         if(images.detectsColor(captureScreen(), "#ffe5e2ce", 540,1135)){
             log("**账号:"+ accid + ",检测到购买每日资源卡住！");
             press(950,520,10);sleep(200);
             swipe(700,1600,700,900,400);sleep(200);
-            press(870,820,10);sleep(200);
-            press(870,820,10);sleep(300);
+            press(870,820,10);sleep(150);
+            press(750,1115,10);sleep(200);
+            press(870,820,10);sleep(350);
         }
-        press(870,1290,10);sleep(200);
-        press(870,1290,10);sleep(300);
-        press(210,1760,10);sleep(200);
-        press(210,1760,10);sleep(300);
-        press(540,1760,10);sleep(200);
-        press(540,1760,10);sleep(300);
-        press(870,1760,10);sleep(200);
-        press(870,1760,10);sleep(300);
+        press(870,1290,10);sleep(150);
+        press(750,1115,10);sleep(200);
+        press(870,1290,10);sleep(350);
+        press(210,1760,10);sleep(150);
+        press(750,1115,10);sleep(200);
+        press(210,1760,10);sleep(350);
+        press(540,1760,10);sleep(150);
+        press(750,1115,10);sleep(200);
+        press(540,1760,10);sleep(350);
+        press(870,1760,10);sleep(150);
+        press(750,1115,10);sleep(200);
+        press(870,1760,10);sleep(350);
 
         log("账号:"+ accid + ",每日资源-OK！");sleep(1000);
     }
@@ -277,6 +285,7 @@ function weekly(){
     if(point2){
         sleep(300);
         press(point2.x+80,point2.y+290,10);sleep(200);
+        press(750,1115,10);sleep(200);
         // 判断是否弹出购买确认界面
         img = captureScreen();sleep(200);
         if(images.detectsColor(img, "#ff0c8c93", 705,1080)){
