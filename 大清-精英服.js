@@ -28,9 +28,9 @@ var mailimg1 = images.read(dir+"/mailimg1.png");    //"领取"模板
 var mailimg2 = images.read(dir+"/mailimg2.png");    //"朕知道了"模板
 
 if(mode == 0){
-    acc = "wyxa";
-    n0 = 1;
-    N = 21;
+    acc = "csjyf";
+    n0 = 0;
+    N = 10;
     // Array = [35,36,40];
 }
 else if(mode == 1){
@@ -113,6 +113,15 @@ function account(){
     while(images.detectsColor(captureScreen(), "#fff7f2d3", 250,925)){
         log("**账号:"+ accid +"：该账号未注册！\n");sleep(500);
         n += 1;
+        if(n > N){
+            log("账号序列已达最大，停止登录检测！");
+            for(k=0;k<10;k++){
+                device.vibrate(600);sleep(400);
+                device.cancelVibration();sleep(200);
+            }
+            Power();                    //Root权限
+            exit();
+        }
         inputacc();
     }
 }
@@ -225,29 +234,34 @@ function mail(){
 function daily(){
     sleep(1000);
     press(630,1710,10);sleep(800);  // 由主界面进入商城
-    var point1 = imgdect(template1, 450, 630, 510, 300);
-    if(point1){
-        sleep(150);
-        press(point1.x+80,point1.y+290,10);sleep(300);
-        press(750,1115,10);sleep(200);
-        // 判断是否弹出购买确认界面
-        img = captureScreen();sleep(100);
-        if(images.detectsColor(img, "#ff0c8c93", 705,1080)){
-            press(870,1180,10);sleep(100);
-            press(755,1080,10);sleep(200);
+    var point1;
+    var flag = 0;
+    for(j=0;j<2;j++){
+        for(i=0;i<3;i++){
+            point1 = imgdect(template1, 330*i+120, 750+j*470, 175, 175);
+            if(point1){
+                // sleep(300);
+                press(point1.x+80,point1.y+290,10);sleep(400);
+                press(750,1115,10);sleep(200);
+                // 判断是否弹出购买确认界面
+                if(images.detectsColor(captureScreen(), "#ff0c8c93", 705,1080)){
+                    press(870,1180,10);sleep(100);
+                    press(755,1080,10);sleep(200);
+                }
+                press(point1.x+80,point1.y+290,10);sleep(50);
+                press(point1.x+80,point1.y+290,10);sleep(300);
+            }
+            else{
+                flag += 1;
+                log("flag = "+flag);
+            }
         }
-        press(point1.x+80,point1.y+290,10);sleep(50);
-        press(point1.x+80,point1.y+290,10);sleep(300);
-
-        point1 = imgdect(template1, 120, 630, 510, 300);
-        if(point1){
-            sleep(300);
-            press(point1.x+80,point1.y+290,10);sleep(100);
-            press(750,1115,10);sleep(200);
-            press(point1.x+80,point1.y+290,10);sleep(50);
-            press(point1.x+80,point1.y+290,10);sleep(300);
-        }
+    }
+    if(flag < 6){
+        log("账号:"+ accid + ",每日资源-OK！");sleep(1000);
+        return;             //退出if语句，不再执行后续语句
         swipe(700,1600,700,900,400);sleep(800);
+        // swipe(700,1600,700,1365,400);sleep(800);  //临时调整向上滑动距离
         press(540,1290,10);sleep(150);  // 淸帝碎片
         press(750,1115,10);sleep(200);
         press(540,1290,10);sleep(350);
@@ -271,8 +285,6 @@ function daily(){
         press(870,1760,10);sleep(150);
         press(750,1115,10);sleep(200);
         press(870,1760,10);sleep(350);
-
-        log("账号:"+ accid + ",每日资源-OK！");sleep(1000);
     }
     else{
         log("**账号:"+ accid + ",每日资源已被领取");sleep(1000);
@@ -408,10 +420,10 @@ function vip(){
     }
     // 领取每周充值礼包
     press(point4.x+280,point4.y+70,10);sleep(500);
-    press(920,700,10);sleep(100);
-    press(920,700,10);sleep(100);
-    press(920,700,10);sleep(50);
-    press(920,700,10);sleep(1200);
+    for(i=0;i<20;i++){
+        press(920,700,10);sleep(50);
+        press(920,700,10);sleep(50);
+    }
 }
 
 //尚衣监
