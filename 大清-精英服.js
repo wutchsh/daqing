@@ -258,7 +258,7 @@ function daily(){
         }
     }
     if(flag < 6){
-        log("账号:"+ accid + ",每日资源-OK！");sleep(1000);
+        log("账号:"+ accid + ",每日资源-OK！");sleep(100);
         // return;             //退出if语句，不再执行后续语句
         swipe(700,1600,700,900,400);sleep(800);
         // swipe(700,1600,700,1365,400);sleep(800);  //临时调整向上滑动距离
