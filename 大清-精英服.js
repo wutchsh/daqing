@@ -333,6 +333,7 @@ function daily(){
         }
     }
     else{
+        swipe(700,1600,700,1470,400);sleep(800);
         log("**账号:"+ accid + ",每日资源已被领取");sleep(1000);
     }
     sleep(500);
