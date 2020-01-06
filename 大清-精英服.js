@@ -1,6 +1,6 @@
 /*  
     作者:wuhtchsh@gmail.com
-    游戏版本：我在大清当皇帝(v5.90)
+    游戏版本：我在大清当皇帝(v6.01)
     请勿用作商业用途，禁止用此脚本及衍生脚本盈利。
 */
 
@@ -11,7 +11,9 @@ var n = 0;
 var acc = "";
 var accid = "";
 var Array = [];
-var mode = 0;
+var mode = 1;
+var pre;    //截图保存前缀
+var suipian = [2,1];    //2行1列;把第四行移动到屏幕可见区域最底部以确定第一个碎片位置
 var template = images.read(dir+"/temp.png");
 var template1 = images.read(dir+"/daily.png");
 var template2 = images.read(dir+"/weekly.png");
@@ -30,13 +32,17 @@ var mailimg2 = images.read(dir+"/mailimg2.png");    //"朕知道了"模板
 if(mode == 0){
     acc = "csjyf";
     n0 = 0;
-    N = 10;
+    N = 11;
+    suipian = [2,2];
+    pre = "一区";
     // Array = [35,36,40];
 }
 else if(mode == 1){
-    acc = "";
-    n0 = 1;
-    N = 10;
+    acc = "csjyf";
+    n0 = 0;
+    N = 11;
+    suipian = [2,1];
+    pre = "二区";
     // Array = [];
 }
 
@@ -52,6 +58,7 @@ function base(){
     press(540,980,10);sleep(100);
     press(540,980,10);sleep(100);
     press(540,980,10);sleep(2000);
+
     libao();sleep(200);
     mobai();sleep(200);
     press(1010,90,10);sleep(2000);  // 回宫，回到主界面
@@ -72,8 +79,8 @@ function base(){
     press(1010,90,10);sleep(1000);
 
     // // 过新增剧情
-    // shangyijian();
-    // press(1010,90,10);sleep(1000);
+    // newStory();
+    // // press(1010,90,10);sleep(1000);
 
     // 领取邮件福利
     mail();
@@ -163,6 +170,7 @@ function yueka(){
 }
 
 function libao(){
+    press(100,300,10);sleep(20);
     press(100,300,10);sleep(600);
     yueka();sleep(800);             // 月卡(含至尊月卡)领取
     swipe(900,1750,150,1750,300);sleep(500);
@@ -253,47 +261,87 @@ function daily(){
             }
             else{
                 flag += 1;
-                log("flag = "+flag);
+                // log("flag = "+flag);
             }
         }
     }
     if(flag < 6){
+        var num=0;
         log("账号:"+ accid + ",每日资源-OK！");sleep(100);
-        // return;             //退出if语句，不再执行后续语句
-        swipe(700,1600,700,900,400);sleep(800);
-        // swipe(700,1600,700,1365,400);sleep(800);  //临时调整向上滑动距离
-        press(540,1290,10);sleep(150);  // 淸帝碎片
-        press(750,1115,10);sleep(200);
-        press(540,1290,10);sleep(350);
-        if(images.detectsColor(captureScreen(), "#ffe5e2ce", 540,1135)){
-            log("**账号:"+ accid + ",检测到购买每日资源卡住！");
-            press(950,520,10);sleep(200);
-            swipe(700,1600,700,900,400);sleep(200);
-            press(870,820,10);sleep(150);
-            press(750,1115,10);sleep(200);
-            press(870,820,10);sleep(350);
+        swipe(700,1600,700,1000,400);sleep(800);
+
+        var j = suipian[0]-1;
+        var k = suipian[1]-1;
+        if(j==0||j==1&&k<2){
+            for(j;j<3;j++){
+                for(k;k<3;k++){
+                    if(num>5){
+                        break;
+                    }
+                    press(210+k*330,920+j*470,10);sleep(300);
+                    press(750,1115,10);sleep(300);
+                    press(210+k*330,920+j*470,10);sleep(300);
+                    if(images.detectsColor(captureScreen(), "#ffe5e2ce", 540,1135)){
+                        log("**账号:"+ accid + ",检测到购买每日资源卡住！");
+                        press(950,520,10);sleep(200);
+                    }
+                    num+=1;
+                }
+                k = 0;
+            }
         }
-        press(870,1290,10);sleep(150);
-        press(750,1115,10);sleep(200);
-        press(870,1290,10);sleep(350);
-        press(210,1760,10);sleep(150);
-        press(750,1115,10);sleep(200);
-        press(210,1760,10);sleep(350);
-        press(540,1760,10);sleep(150);
-        press(750,1115,10);sleep(200);
-        press(540,1760,10);sleep(350);
-        press(870,1760,10);sleep(150);
-        press(750,1115,10);sleep(200);
-        press(870,1760,10);sleep(350);
+        else if(j==1&&k>1||j==2&&k<2){
+            swipe(700,1600,700,1135,400);sleep(800); //滑动一行
+            j = j-1;
+            for(j;j<3;j++){
+                for(k;k<3;k++){
+                    if(j+k>3){
+                        break;
+                    }
+                    press(210+k*330,920+j*470,10);sleep(300);
+                    press(750,1115,10);sleep(300);
+                    press(210+k*330,920+j*470,10);sleep(300);
+                    if(images.detectsColor(captureScreen(), "#ffe5e2ce", 540,1135)){
+                        log("**账号:"+ accid + ",检测到购买每日资源卡住！");
+                        press(950,520,10);sleep(200);
+                    }
+                }
+                k = 0;
+            }
+        }
+        else if(j==2&&k==2){
+            swipe(700,1600,700,665,400);sleep(800); //滑动两行
+            j = j-2;
+            for(j;j<3;j++){
+                for(k;k<3;k++){
+                    if(j+k>3){
+                        break;
+                    }
+                    press(210+k*330,920+j*470,10);sleep(300);
+                    press(750,1115,10);sleep(300);
+                    press(210+k*330,920+j*470,10);sleep(300);
+                    if(images.detectsColor(captureScreen(), "#ffe5e2ce", 540,1135)){
+                        log("**账号:"+ accid + ",检测到购买每日资源卡住！");
+                        press(950,520,10);sleep(200);
+                    }
+                }
+                k = 0;
+            }
+        }
+        else{
+            log("**账号:"+ accid + ",升星碎片领取失败");sleep(1000);
+        }
     }
     else{
         log("**账号:"+ accid + ",每日资源已被领取");sleep(1000);
     }
+    sleep(500);
 }
 
 function weekly(){
-    swipe(700,1800,700,150,500);sleep(200);
-    var point2 = imgdect(template2, 120, 630, 840, 950);
+    // swipe(700,1800,700,150,500);sleep(200);
+    swipe(700,1800,700,400,500);sleep(400); //滑动三行
+    var point2 = imgdect(template2, 120, 1000, 840, 800);
     if(point2){
         sleep(300);
         press(point2.x+80,point2.y+290,10);sleep(200);
@@ -308,7 +356,24 @@ function weekly(){
         log("账号:"+ accid + ",每周资源-OK！");sleep(1000);
     }
     else{
-        log("**账号:"+ accid + ",每周资源已被领取！");sleep(1000);
+        swipe(700,1600,700,665,400);sleep(800); //滑动两行
+        point2 = imgdect(template2, 120, 1000, 840, 800);
+        if(point2){
+            sleep(300);
+            press(point2.x+80,point2.y+290,10);sleep(200);
+            press(750,1115,10);sleep(200);
+            // 判断是否弹出购买确认界面
+            img = captureScreen();sleep(200);
+            if(images.detectsColor(img, "#ff0c8c93", 705,1080)){
+                press(870,1180,10);sleep(300);
+                press(755,1080,10);sleep(200);
+            }
+            press(point2.x+80,point2.y+290,10);sleep(200);
+            log("账号:"+ accid + ",每周资源-OK！");sleep(1000);
+        }
+        else{
+            log("**账号:"+ accid + ",每周资源已被领取！");sleep(1000);
+        }   
     }
 }
 
@@ -367,7 +432,7 @@ function saveimg(){
     press(480,1180,10);sleep(500);
     files.ensureDir(dir+"/imgtemp/");sleep(200);
     img = images.clip(captureScreen(),400,5,230,50);sleep(200);
-    images.save(img, dir+"/imgtemp/"+accid+".png", format = "png", quality = 100);sleep(200);
+    images.save(img, dir+"/imgtemp/"+pre+"-"+accid+".png", format = "png", quality = 100);sleep(200);
     sleep(200);
     log("账号:"+ accid + ",元宝截图-OK！");sleep(200);
 }
@@ -426,21 +491,79 @@ function vip(){
     }
 }
 
-//尚衣监
-function shangyijian(){
-    sleep(300);
-    for(i=0;i<4;i++){
-        press(540,350,10);sleep(300);
+//临时通过版本更新新增剧情,注意新增剧情优先级
+function newStory(){
+    for(i=0;i<20;i++){                              //跳过对话
+        press(540,1600,10);sleep(50);
     }
-    sleep(300);
+    press(765,430,10);sleep(400);                   //点击盛京
+    if(images.detectsColor(captureScreen(), "#ffcc4626", 540,1080)){    //检测异常状态
+        press(540,1085,10);sleep(200);
+        press(780,720,10);sleep(400);               //点击山东
+        if(images.detectsColor(captureScreen(), "#ffcc4626", 540,1080)){
+            press(540,1085,10);sleep(1000);
+            press(990,1675,10);sleep(1000);         //回宫
+        }
+        return;
+    }
+    press(755,1115,10);sleep(200);
+    press(540,1830,10);sleep(200);
+    for(i=0;i<10;i++){
+        press(540,1600,10);sleep(50);
+    }
+    press(765,285,10);sleep(200);
+    for(i=0;i<10;i++){
+        press(540,1600,10);sleep(50);
+    }
+    press(288,540,10);sleep(200);            //点击京城
+    for(i=0;i<10;i++){
+        press(540,1600,10);sleep(50);
+    }
+    for(i=0;i<70;i++){                      // 进攻
+        press(540,1750,10);sleep(100);
+    }
+    for(i=0;i<10;i++){
+        press(540,1630,10);sleep(50);
+    }
+    press(540,1735,10);sleep(200);          // 开战
+    for(i=0;i<10;i++){
+        press(540,1630,10);sleep(50);
+    }
+    for(i=0;i<10;i++){
+        press(540,1600,10);sleep(50);
+    }
+    press(765,285,10);sleep(200);           //升级盛京
+    press(540,1580,10);sleep(200);
+    press(1025,300,10);sleep(200);
+    for(i=0;i<10;i++){
+        press(540,1600,10);sleep(50);
+    }
+    press(765,285,10);sleep(200);
+    for(i=0;i<10;i++){
+        press(540,1600,10);sleep(50);
+    }
+    press(540,1580,10);sleep(200);
+    press(1025,300,10);sleep(200);
+    press(288,540,10);sleep(200);
+    for(i=0;i<70;i++){                      // 进攻
+        press(540,1750,10);sleep(100);
+    }
+    for(i=0;i<10;i++){
+        press(540,1630,10);sleep(50);
+    }
+    press(540,1735,10);sleep(200);          // 开战
+    for(i=0;i<10;i++){
+        press(540,1630,10);sleep(50);
+    }
     for(i=0;i<20;i++){
-        press(630,780,10); sleep(50);
-        press(630,780,10); sleep(100);
-    }    
+        press(540,1600,10);sleep(50);
+    }
+    press(540,1810,10);sleep(400);
+    press(990,1675,10);sleep(1000);         //回宫
 }
 
 function main(){
-    device.setBrightness(0);
+    // device.setBrightness(0);
     var date = new Date();
     var day = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
     var time = date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
