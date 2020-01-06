@@ -11,7 +11,7 @@ var n = 0;
 var acc = "";
 var accid = "";
 var Array = [];
-var mode = 1;
+var mode = 0;
 var pre;    //截图保存前缀
 var suipian = [2,1];    //2行1列;把第四行移动到屏幕可见区域最底部以确定第一个碎片位置
 var template = images.read(dir+"/temp.png");
